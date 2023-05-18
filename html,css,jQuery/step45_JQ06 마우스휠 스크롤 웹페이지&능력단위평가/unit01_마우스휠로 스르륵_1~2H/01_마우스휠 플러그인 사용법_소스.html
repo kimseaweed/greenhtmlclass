@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>06_마우스휠 플러그인 사용법</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/prefixfree.min.js"></script>
+	<!-- 마우스휠 플러그인 연결 -->
+	<script src="js/jquery.mousewheel.js"></script>
+	<style>
+		.box{
+			width: 500px;
+			height: 500px;
+			background-color: orange;
+			margin:100px auto;
+			color:white;
+			line-height: 500px;
+			text-align: center;
+			font-size: 2em;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<p>마우스휠이 어떻게 움직였을까?</p>
+	</div>
+	<script>
+		$(function(){
+			var box =$(".box");
+		})
+	</script>
+</body>
+</html>

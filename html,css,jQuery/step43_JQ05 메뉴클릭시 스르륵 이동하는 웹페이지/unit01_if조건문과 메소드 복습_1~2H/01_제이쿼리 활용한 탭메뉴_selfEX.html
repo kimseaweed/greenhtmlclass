@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/prefixfree.min.js"></script>
+	<style>
+		*{margin: 0;
+		padding: 0;}
+		ol li, ul li{
+			list-style: none;
+		} 
+		#diary{
+			width: 1000px;
+			height: 700px;
+			/*border:1px solid red;*/
+			position: absolute;
+			left:50%;
+			margin-left: -500px;
+			top:10%;
+		}
+		#diary .tab_content{
+			width: 100%;
+			height: 100%;
+			background: url(img/diary_empty.png) no-repeat;
+			background-size: contain;
+		}
+		#diary .tab_content .content{
+			width: 80%;
+			height: 75%;
+			position: absolute;
+			left:8%;
+			/*border:1px solid blue;*/
+			top:60px;
+		}
+		#diary .tab_content .content:nth-child(1){
+			background: url(img/diary_contents1.png);
+			background-size: contain;
+		}
+		#diary .tab_content .content:nth-child(2){
+			background: url(img/diary_contents2.png);
+			background-size: contain;
+		}
+		#diary .tab_content .content:nth-child(3){
+			background: url(img/diary_contents3.png);
+			background-size: contain;
+		}
+		#diary .tab_content .content:nth-child(4){
+			background: url(img/diary_contents4.png);
+			background-size: contain;
+		}
+		/*tab menu*/
+		#diary #tab_menu{
+			width: 40%;
+			height: 30px;
+			position: absolute;
+			left: 70px;
+			top:25px;
+			/*border:1px solid red;*/
+			overflow: hidden;
+		}
+		#diary #tab_menu li{
+			float: left;
+			width: 20%;
+			height: 40px;
+			background-color: #8BD3DA;
+			border-radius: 7px 7px 0 0;
+			position: relative;
+			cursor: pointer;
+			margin-right: 1px;
+			text-align: center;
+			top:10px;
+			transition: transform 0.5s;
+		}
+		#diary #tab_menu li.active{
+			transform-origin: center bottom;
+			transform: translateY(-10px);
+		}
+		#diary #tab_menu li:nth-child(2){
+			background-color: #F8D974
+		}
+		#diary #tab_menu li:nth-child(3){
+			background-color: #F8A474
+		}
+		#diary #tab_menu li:nth-child(4){
+			background-color: #74F8C4
+		}
+	</style>
+</head>
+<body>
+	<!-- div#diary>(ul#tab_menu>li*4)+div.tab_content>.content*4 -->
+	<div id="diary">
+		<ul id="tab_menu">
+			<li class="active">our story</li>
+			<li>class</li>
+			<li>store</li>
+			<li>event</li>
+		</ul>
+		<div class="tab_content">
+			<div class="content"></div>
+			<div class="content"></div>
+			<div class="content"></div>
+			<div class="content"></div>
+		</div>
+	</div>	
+	<!--핵심포인트 정리
+	
+	-->
+	<script>
+		$(function(){
+			var tab_menu = $("#tab_menu li");
+			var content = $(".tab_content .content");
+
+			content.hide();
+			content.eq(0).show();
+
+			tab_menu.click(function(){
+				var i = $(this).index();
+
+				content.hide();
+				content.eq(i).show();
+
+				tab_menu.removeClass("active")
+				tab_menu.eq(i).addClass("active");
+
+			})
+
+			
+		})
+	</script>
+</body>
+</html>

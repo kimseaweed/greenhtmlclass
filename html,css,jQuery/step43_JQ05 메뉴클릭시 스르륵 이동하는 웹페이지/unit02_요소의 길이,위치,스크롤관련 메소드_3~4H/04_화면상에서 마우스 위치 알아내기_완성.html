@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>03_화면상에서 마우스 위치 알아내기</title>
+	<style>
+		*{padding:0; margin:0;}
+		body{width:2000px;
+			height:3000px;}
+		p{font-size: 2em;}	
+		div{position:fixed;}
+	</style>
+</head>
+<body>	
+	<!--핵심포인트 정리
+	e.pageX는 브라우저 상에서 화면이 스크롤된 값을 포함한 마우스 커서의 x축 좌표를 구함
+	e.pageY는 브라우저 상에서 화면이 스크롤된 값을 포함한 마우스 커서의 y축 좌표를 구함
+	e.clientX는 브라우저상에서 화면 스크롤된 값을 포함하지 않은 마우스 커서의 x축 좌표를 구한다.
+	e.clientY는 브라우저상에서 화면 스크롤된 값을 포함하지 않은 마우스 커서의 y축 좌표를 구한다.
+	e.screenX는 디바이스 모니터 화면상에서 마우스 커서의 x축 좌표를 구한다.
+	e.screenY는 디바이스 모니터 화면상에서 마우스 커서의 y축 좌표를 구한다.
+	-->
+	<!-- div>p*6>span -->
+	<div>
+		<p>pageX축 좌표:<span class="posX1"></span></p>
+		<p>pageY축 좌표:<span class="posY1"></span></p>
+		<p>clientX축 좌표:<span class="posX2"></span></p>
+		<p>clientY축 좌표:<span class="posY2"></span></p>
+		<p>screenX축 좌표:<span class="posX3"></span></p>
+		<p>screenY축 좌표:<span class="posY3"></span></p>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/prefixfree.min.js"></script>
+	<script>
+		$(function(){
+			$(window).mousemove(function(event){
+				var pageX = event.pageX;
+				var pageY = event.pageY;
+				var clientX = event.clientX;
+				var clientY = event.clientY;
+				var screenX = event.screenX;
+				var screenY = event.screenY;
+
+				var result = $("div span");
+				result.eq(0).text(pageX);
+				result.eq(1).text(pageY);
+				result.eq(2).text(clientX);
+				result.eq(3).text(clientY);
+				result.eq(4).text(screenX);
+				result.eq(5).text(screenY);
+			})
+			
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/prefixfree.min.js"></script>
+	<style>
+    button{
+    	float: left; 
+    	margin-right: 10px; 
+    	margin-top: 20px;
+    	cursor: pointer;
+    }
+    
+    #lunch{
+    	background: url(img/back_02.png) no-repeat;
+    	/*background-size: cover;*/
+		width: 700px;
+		height: 500px;
+		margin-top: 35px;
+		/*border: 5px solid gray;*/
+		display: inline-block;
+		
+    }
+    img,#lunch{
+    	border:15px solid #F3778D;
+    	border-top-color:pink;
+    	border-bottom-color: pink;
+    }
+</style>
+</head>
+<body>
+	<div>
+		<button class="btn1">가로 100 으로 지정</button>
+		<button class="btn2">가로 200 으로 지정</button>
+		<button class="btn3">가로 원래대로 (초기화)</button>
+	</div>	
+	<div>
+		<button class="btn4">높이 100 으로 지정</button>
+		<button class="btn5">높이 200 으로 지정</button>
+		<button class="btn6">높이 원래대로 (초기화)</button>
+		
+	</div>
+	<br>
+	<br>
+	<br>	
+	<img src="img/back_01.png" alt="" id="tree">
+	<div id="lunch"></div>
+
+	<script>
+		$(function(){
+			var btn = $("button");
+			var img = $("img");
+			var bg_img = $("#lunch");
+
+			btn.eq(0).click(function(){
+				img.width(100);
+				bg_img.css({"width":100,"height":100,"background-size":"cover", "background-position":"center"});
+			})
+			btn.eq(1).click(function(){
+				img.width(200);
+				bg_img.css({"width":200,"height":200,"background-size":"cover", "background-position":"center"});
+			})
+			btn.eq(2).click(function(){
+				img.width("");
+				//원래 사이즈로 초기화 할 때에는 width("") 처리함.
+				bg_img.css({"width":"","height":"","background-size":"cover", "background-position":"center"});
+			})
+
+			btn.eq(3).click(function(){
+				img.animate({"height":100});
+				//원래 사이즈로 초기화 할 때에는 width("") 처리함.
+				bg_img.animate({"width":100,"height":100,"background-size":"cover", "background-position":"center"});
+			})
+			btn.eq(4).click(function(){
+				img.animate({"height":200});
+				//원래 사이즈로 초기화 할 때에는 width("") 처리함.
+				bg_img.animate({"width":200,"height":200,"background-size":"cover", "background-position":"center"});
+			})
+			btn.eq(5).click(function(){
+				img.animate({"height":500});
+				//원래 사이즈로 초기화 할 때에는 width("") 처리함.
+				bg_img.animate({"width":700,"height":500,"background-size":"cover", "background-position":"center"});
+			})
+		})  
+	</script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+	*{margin: 0;
+	padding: 0;}
+	.box{
+		height:100px;
+		width:300px;
+		padding:10px;
+		margin:3px;
+		border:5px solid blue;
+		background-color:lightblue;
+		float: left;
+	}
+	.clear{
+		clear: both
+	}
+</style>
+</head>
+<body>
+
+<div class="box"></div>
+<div class="box"></div>
+<div class="clear"></div>
+<button>Display the inner width of div</button>
+<p>innerWidth() - returns the inner width of an element (includes padding).</p>
+<script>
+	$(function(){
+		var box = $(".box");
+		var btn = $("button");
+
+		btn.click(function(){
+			var wd = box.width();
+			var ht = box.height();
+			
+			//width():css에서 설정한 가로값만 가져옴
+			var innerWd = box.innerWidth();
+			var innerHt = box.innerHeight();
+			
+			//innerWidth():css에서 설정한 가로값+양쪽 padding
+			var outerWd = box.outerWidth();
+			var outerHt = box.outerHeight();
+			//outerWidth():css에서 설정한 가로값+양쪽 padding+양쪽 border값
+			var marginWd = box.outerWidth(true);
+			var marginHt = box.outerHeight(true);
+			//outerWidth(true):css에서 설정한 가로값+양쪽 padding+양쪽 border값+양쪽 margin값
+			alert(marginHt);
+		})
+	})
+</script>
+</body>
+</html>

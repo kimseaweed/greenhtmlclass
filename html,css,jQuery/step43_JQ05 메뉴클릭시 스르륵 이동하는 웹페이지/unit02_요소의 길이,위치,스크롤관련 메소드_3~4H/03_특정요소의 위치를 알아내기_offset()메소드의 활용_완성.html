@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>03_특정요소의 위치를 알아내기_offset()메소드의 활용</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<style>
+		div{
+			width:200px;
+			height:200px;
+			background-color: blue;
+			position: absolute;
+			left:300px;
+			/*top:600px;*/
+			bottom:600px;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<h1>박스의 위치 확인하고 이동하기</h1>
+	<button>박스 위치 확인하기</button>
+	<button>박스 위치 이동하기</button>
+	<script>
+		$(function(){
+			var box = $("div");
+			var offset_left=box.offset().left;
+			var offset_top=box.offset().top;
+			var btn = $("button");
+
+			btn.eq(0).click(function(){
+				alert("박스의 위치는 "+offset_left+","+offset_top +" 입니다.");
+			})
+			btn.eq(1).click(function(){
+				box.offset({"left":100,"top":200});
+			})
+			 
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>01_조건문의 활용</title>
+	<style>
+		#coupon{
+			border:5px dashed #F57430;
+			border-radius: 7px;
+			margin-top: 5px;
+			background-color: #FFDA80;
+			padding:10px;
+		}
+		span{
+			background-color: #FF9743;
+			color:white;
+		}
+	</style>
+</head>
+<body>
+	<img src="img/tmon.gif" alt="">
+	<h1>티몬 이벤트</h1>
+	<h2>내 생일 입력하고 계절에 맞는 선물 할인이벤트에 참여해보세요</h2>
+	<button>이벤트 참여하고 할인받기</button>
+	<div id="coupon">
+		<h1>티몬의 생일축하 이벤트에 당첨되셨습니다.</h1>
+		<h2>당신의 생일에 맞는 선물을 할인해 드려요</h2>
+		<p>당신 생일의 계절은 <span></span>이군요. 계절에 맞는 <span></span> 제품 50% 할인권을 선물해 드립니다.</p>
+		<button>생일축하 50% 할인권 받기</button>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>
+	//즉시질문창 prompt("질문사항");
+	  //질문창 window.prompt("원하는 질문을 문구로 작성","예시값");
+	
+	  /*if조건문을 활용한 조건비교
+	  if(조건식1){
+	조건식1이 참이면 실행될 내용;
+	  }else if(조건식2){
+	조건식2이 참이면 실행될 내용;
+	  }else if(조건식3){
+	조건식3이 참이면 실행될 내용;
+	  }else{
+	앞의 조건식1,2,3이 거짓이면 실행될 내용;
+	  }
+
+	  1,2월(한겨울)/3,4,5월(봄)/6,7,8월(여름)/9,10,11월(가을)/12월(겨울)
+	  */
+	  $(function(){
+	  	var coupon=$("#coupon");
+	  	var btn1=$("button").eq(0);
+	  	var txt1 = $("span").eq(0);
+	  	var txt2 = $("span").eq(1);
+
+	  	coupon.hide();
+	  	btn1.click(function(){
+	  		//1.prompt창에서 입력받은 값을 변수로 지정하기
+	  		var user_bd = prompt("당신 생일의 월을 숫자로 입력해주세요");
+	  		//2.변수에 저장된 값을 if구문을 이용하여 비교하고 조건을 만족하면 실행시킬 내용을 코딩으로 구현하기
+	  		
+	  		/*
+	  		if(user_bd<3){
+				txt1.text("한겨울");
+				txt2.text("손난로");
+				coupon.show();
+	  		}else if(user_bd<6){
+				txt1.text("봄");
+				txt2.text("봄의 향수");
+				coupon.show();
+	  		}else if(user_bd<9){
+				txt1.text("여름");
+				txt2.text("수영복");
+				coupon.show();
+	  		}else if(user_bd<12){
+				txt1.text("가을");
+				txt2.text("도서 상품권");
+				coupon.show();
+	  		}else if(user_bd<13){
+				txt1.text("겨울");
+				txt2.text("담요세트");
+				coupon.show();
+	  		}else{
+	  			alert("당신 생일의 월을 숫자만 다시 정확하게 입력해주세요");
+	  		}
+	  		*/
+	  		if(user_bd<3 || user_bd==12){
+				txt1.text("겨울");
+				txt2.text("손난로");
+				coupon.show();
+	  		}if(user_bd>2 && user_bd<6){
+				txt1.text("봄");
+				txt2.text("봄의 향수");
+				coupon.show();
+	  		}if(user_bd>5 && user_bd<9){
+				txt1.text("여름");
+				txt2.text("수영복");
+				coupon.show();
+	  		}if(user_bd>8 && user_bd<12){
+				txt1.text("가을");
+				txt2.text("도서 상품권");
+				coupon.show();
+	  		}
+	  	})
+
+	  })
+		
+	</script>
+</body>
+</html>

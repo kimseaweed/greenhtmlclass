@@ -1,0 +1,3253 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>DAHYE</title>
+	<link rel="icon" href="girl.png">
+	<link rel="stylesheet" href="js/animate.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/prefixfree.min.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/jquery.mousewheel.js"></script>
+	<style>
+	/*reset css*/
+		*{margin: 0;padding: 0;}
+		ul li, ol li{list-style: none;}
+	/*배경 스타일*/
+		#wrapper{
+			width: 9600px;
+			height: 980px;
+			background-position: left bottom;
+			background: url(bg/bg_b.png) no-repeat;
+			position: absolute;
+			overflow: hidden;
+		}
+		#bg_f{
+			width: 100%;
+			height: 583px;
+			background-position: left bottom;
+			background: url(bg/bg_f.png) no-repeat;
+			position: absolute;
+			bottom: 0;
+		}
+	/*각 section 레이아웃*/
+		#wrapper>section{
+			width: 20%;
+			height: 100%;
+			text-indent: -9999px;
+			position: absolute;
+		}
+		#wrapper section:nth-child(1){
+			position: absolute;
+			left: 0%;
+			top: 0;
+		}
+		#wrapper section:nth-child(2){
+			position: absolute;
+			left: 20%;
+			top: 0;
+		}
+		#wrapper section:nth-child(3){
+			position: absolute;
+			left: 40%;
+			top: 0;
+		}
+		#wrapper section:nth-child(4){
+			position: absolute;
+			left: 60%;
+			top: 0;
+		}
+		#wrapper section:nth-child(5){
+			position: absolute;
+			left: 80%;
+			top: 0;
+		}
+	/*--------------------메인페이지 왼쪽 상단 LNB--------------------*/
+		nav#lnb{
+			width: 729px;
+			height: 108px;
+			top: -1%;
+			left: 1%;
+			position: absolute;
+			overflow: hidden;
+			z-index: 4;
+		}
+		nav#lnb li{
+			float: left;
+			height: 108px;
+			position: relative;
+		}
+		nav#lnb a{
+			display: block;
+			height: 108px;
+			width: 100%;
+			position: relative;
+		}
+		nav#lnb li:nth-child(1) a{
+			width: 130px;
+			background: url(nav/lnb_on_01.png);
+			background-position: 0;
+			height: 45px;
+			background-repeat: no-repeat;
+			top: 40%;
+			position: relative;
+		}
+		nav#lnb li:nth-child(2) a{
+			width: 128px;
+			background: url(nav/lnb_on_02.png);
+			background-position: 0;
+			height: 100%;			
+		}
+		nav#lnb li:nth-child(3) a{
+			width: 125px;
+			background: url(nav/lnb_on_03.png);
+			background-position: 0;
+			height: 100%;
+		}
+		nav#lnb li:nth-child(4) a{
+			width: 212px;
+			background: url(nav/lnb_on_04.png);
+			background-position: 0;
+			height: 100%;
+		}
+		nav#lnb li:nth-child(5) a{
+			width: 134px;
+			background: url(nav/lnb_on_05.png);
+			background-position: 0;
+			height: 100%;
+		}
+	/*lnb 호버시 애니메이션*/
+		nav#lnb li:nth-child(1):hover a, nav#lnb li:nth-child(1).active a{
+			width: 130px;
+			height: 45px;
+			background: url(nav/lnb_on_01.png) no-repeat;
+			animation: logo1 1s steps(6) infinite;
+			animation-direction: reverse;
+		}
+		nav#lnb li:nth-child(2):hover a, nav#lnb li:nth-child(2).active a{
+			width: 128px;
+			height: 100%;
+			background: url(nav/lnb_on_02.png);
+			animation: logo2 4s steps(17) infinite;
+			animation-direction: reverse;
+		}
+		nav#lnb li:nth-child(3):hover a, nav#lnb li:nth-child(3).active a{
+			width: 125px;
+			height: 100%;
+			background: url(nav/lnb_on_03.png);
+			animation: logo3 4s steps(16) infinite;
+			animation-direction: reverse;
+		}
+		nav#lnb li:nth-child(4):hover a, nav#lnb li:nth-child(4).active a{
+			width: 212px;
+			height: 100%;
+			background: url(nav/lnb_on_04.png);
+			animation: logo4 4s steps(19) infinite;
+			animation-direction: reverse;
+		}
+		nav#lnb li:nth-child(5):hover a, nav#lnb li:nth-child(5).active a{
+			width: 134px;
+			height: 100%;
+			background: url(nav/lnb_on_05.png);
+			animation: logo5 4s steps(16) infinite;
+			animation-direction: reverse;
+		}
+		@keyframes logo1{
+			0%{background-position: 0}
+			100%{background-position: -780px}
+		}
+		@keyframes logo2{
+			0%{background-position: 0}
+			50%{background-position: 0}
+			100%{background-position: -2176px}
+		}
+		@keyframes logo3{
+			0%{background-position: 0}
+			50%{background-position: 0}
+			100%{background-position: -2001px}
+		}
+		@keyframes logo4{
+			0%{background-position: 0}
+			50%{background-position: 0}
+			100%{background-position: -4028px}
+		}
+		@keyframes logo5{
+			0%{background-position: 0}
+			50%{background-position: 0}
+			100%{background-position: -2143px}
+		}
+	/*--------------------모든페이지 오른쪽 중간 GNB--------------------*/
+		nav#gnb{
+			width: 185px;
+			height: 648px;
+			background: url(nav/gnb.png);
+			right: 5%;
+			position: absolute;
+			top: 10%;
+			position: fixed;
+			z-index: 4;
+			animation: dung 5s infinite;
+		}
+		@keyframes dung{
+			0%{top: 10%;}
+			50%{top: 5%;}
+			100%{top: 10%;}
+		}
+		nav#gnb a{
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+		nav#gnb ul li{
+			position: relative;
+			width: 110px;
+			height: 50px;
+			top: 250px;
+			left: 35px;
+			margin-bottom: 10px;
+		}
+		nav#gnb ul li:nth-child(1){
+			position: absolute;
+			background: url(nav/gnb_on_01.png) no-repeat;
+			width: 110px;
+			height: 50px;
+			background-position: 0;
+			margin-left: 3px;
+		}
+		nav#gnb ul li:nth-child(2){
+			position: absolute;
+			background: url(nav/gnb_on_02.png) no-repeat;
+			width: 110px;
+			height: 50px;
+			top: 49%;
+			background-position: 0;
+		}
+		nav#gnb ul li:nth-child(3){
+			position: absolute;
+			background: url(nav/gnb_on_03.png) no-repeat;
+			background-position: 0;
+			width: 110px;
+			height: 50px;
+			top: 60%;
+		}
+		nav#gnb ul li:nth-child(4){
+			position: absolute;
+			background: url(nav/gnb_on_04.png) no-repeat;
+			width: 110px;
+			height: 50px;
+			top: 70%;
+			background-position: 0;
+		}
+		nav#gnb ul li:nth-child(5){
+			position: absolute;
+			background: url(nav/gnb_on_05.png) no-repeat;
+			width: 110px;
+			height: 50px;
+			top: 80%;
+			background-position: 0;
+		}
+	/*gnb 호버시 애니메이션*/
+		nav#gnb ul li:nth-child(1):hover, nav#gnb ul li:nth-child(1).active{
+			position: absolute;
+			background: url(nav/gnb_on_01.png) no-repeat;
+			width: 110px;
+			height: 50px;
+			margin-left: 3px;
+			animation: main 1s steps(6) infinite;
+		}
+		nav#gnb ul li:nth-child(2):hover, nav#gnb ul li:nth-child(2).active{
+			position: absolute;
+			background: url(nav/gnb_on_02.png) no-repeat;
+			width: 110px;
+			height: 50px;
+			animation: kstory 1.5s steps(7) infinite;
+		}
+		nav#gnb ul li:nth-child(3):hover, nav#gnb ul li:nth-child(3).active{
+			position: absolute;
+			background: url(nav/gnb_on_03.png) no-repeat;
+			width: 110px;
+			height: 50px;
+			animation: kbrand 1.5s steps(7) infinite;
+		}
+		nav#gnb ul li:nth-child(4):hover, nav#gnb ul li:nth-child(4).active{
+			position: absolute;
+			background: url(nav/gnb_on_04.png) no-repeat;
+			width: 110px;
+			height: 50px;
+			animation: magickinder 2s steps(12) infinite;
+		}
+		nav#gnb ul li:nth-child(5):hover, nav#gnb ul li:nth-child(5).active{
+			position: absolute;
+			background: url(nav/gnb_on_05.png) no-repeat;
+			width: 110px;
+			height: 50px;
+			animation: kmovie 1.5s steps(7) infinite;
+		}
+		@keyframes main{
+			0%{}
+			100%{background-position: -660px}
+		}
+		@keyframes kstory{
+			0%{}
+			100%{background-position: -770px}
+		}
+		@keyframes kbrand{
+			0%{}
+			100%{background-position: -770px}
+		}
+		@keyframes magickinder{
+			0%{}
+			100%{background-position: -1320px}
+		}
+		@keyframes kmovie{
+			0%{}
+			100%{background-position: -770px}
+		}
+	/*--------------------main 컨텐츠--------------------*/
+		div#castle{
+			width: 930px;
+			height: 550px;
+			background: url(contents/castle.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -465px;
+			bottom: 30%;
+			z-index: 4;
+			cursor: pointer;
+		}
+		/*main 호버시*/
+		div#castle:hover{
+			background: url(contents/castle_on.png);
+			width: 930px;
+			height: 550px;
+			left: 50%;
+			margin-left: -465px;
+			bottom: 30%;
+		}
+		div#castle:hover>div#click{
+			opacity: 0;
+		}
+		/*main click!! 애니메이션*/
+		div#click{
+			width: 100px;
+			height: 37px;
+			position: absolute;
+			top: 75%;
+			left: 50%;
+			margin-left: -50px;
+			z-index: 902;
+			animation: click 1.2s infinite;
+		}
+		@keyframes click{
+			0%{}
+			100%{background: url(contents/click.png);}
+		}
+		/*main 배너*/
+		div#main_banner{
+			width: 600px;
+			height: 400px;
+			background: url(contents/main_banner.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -300px;
+			z-index: 11;
+			display: none;
+			/*animation: bounceInDown 1s 1;*/
+		}
+		/*----------main 꾸미기----------*/
+		/*▶풍선*/
+		div#m_b1{
+			width: 22px;
+			height: 75px;
+			background: url(contents/balloon01.png);
+			position: absolute;
+			background-size: contain;
+			bottom: 75%;
+			left: 20%;
+			animation: m_b1 3s infinite;
+		}
+		@keyframes m_b1{
+			0%{bottom: 73%;}
+			50%{bottom: 75%;}
+			100%{bottom: 73%;}
+		}
+		div#m_b2{
+			width: 33px;
+			height: 115px;
+			background: url(contents/balloon02.png);
+			position: absolute;
+			bottom: 85%;
+			left: 55%;
+			animation: m_b2 3.5s infinite;
+			z-index: 1;
+		}
+		@keyframes m_b2{
+			0%{bottom: 85%;}
+			50%{bottom: 83%;}
+			100%{bottom: 85%;}
+		}
+		div#m_b3{
+			width: 22px;
+			height: 75px;
+			background: url(contents/balloon04.png);
+			position: absolute;
+			background-size: contain;
+			bottom: 80%;
+			right: 15%;
+			animation: m_b2 2.5s infinite;
+			z-index: 1;
+		}
+		@keyframes m_b3{
+			0%{bottom: 82%;}
+			50%{bottom: 80%;}
+			100%{bottom: 82%;}
+		}
+		/*▶구름*/
+		div#m_c1{
+			width: 140px;
+			height: 30px;
+			background: url(contents/cloud01.png);
+			position: absolute;
+			top: 10%;
+			left: 8%;
+			animation: m_c1 10s infinite;
+		}
+		@keyframes m_c1{
+			0%{left: 8%;}
+			50%{left: 15%;}
+			100%{left: 8%;}
+		}
+		div#m_c2{
+			width: 200px;
+			height: 50px;
+			background: url(contents/cloud04.png);
+			position: absolute;
+			top: 8%;
+			left: 48%;
+			animation: m_c2 12s infinite;
+		}
+		@keyframes m_c2{
+			0%{left: 45%;}
+			50%{left: 55%;}
+			100%{left: 45%;}
+		}
+		div#m_c3{
+			width: 170px;
+			height: 45px;
+			background: url(contents/cloud02.png);
+			position: absolute;
+			top: 5%;
+			right: 8%;
+			animation: m_c3 10s infinite;
+		}
+		@keyframes m_c3{
+			0%{right: 8%;}
+			50%{right: 15%;}
+			100%{right: 8%;}
+		}
+		/*▶롤러코스터*/
+		div#roller{
+			width: 700px;
+			height: 360px;
+			background: url(contents/roller.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -920px;
+			top: 26%;
+			overflow: hidden;
+		}
+		div#train{
+			width: 191px;
+			height: 177px;
+			background: url(contents/train.png);
+			position: absolute;
+			animation: roller 1.5s steps(7) infinite;
+		}
+		@keyframes roller{
+			0%{left: 36%; top: 16%;}
+			60%{left: 70%; top: 74%;}
+			100%{left: 70%; top: 74%;}
+		}
+		/*▶드롭*/
+		div#drop{
+			width: 130px;
+			height: 242px;
+			background: url(bg/drop01.png);
+			position: absolute;
+			right: 50%;
+			margin-right: -700px;
+			top: 36%;
+		}
+		div#drop01{
+			width: 130px;
+			height: 46px;
+			background: url(bg/drop02.png);
+			position: absolute;
+			right: 50%;
+			margin-right: -65px;
+			animation: drop 2.5s infinite;
+		}
+		@keyframes drop{
+			0%{top: 10%;}
+			50%{top: 63%;}
+			80%{top: 63%;}
+			100%{top: 10%;}
+		}
+		/*▶회전목마*/
+		div#bg_carousel{
+			width: 200px;
+			height: 160px;
+			background: url(bg/carousel.png);
+			position: absolute;
+			right: 50%;
+			margin-right: -950px;
+			top: 40%;
+			animation: carousel_1 1s steps(4) infinite;
+		}
+		@keyframes carousel_1{
+			from{}
+			to{background-position: -800px}
+		}
+		/*▶관람차*/
+		div#wheel{
+			width: 130px;
+			height: 140px;
+			background: url(bg/wheel01.png);
+			position: absolute;
+			right: 50%;
+			margin-right: -470px;
+			top: 44%;
+		}
+		div#wheel01{
+			width: 200px;
+			height: 200px;
+			background: url(bg/wheel02.png);
+			position: absolute;
+			animation: wheel 5s steps(16) infinite;
+			right: 50%;
+			margin-right: -100px;
+			bottom: 22%;
+		}
+		@keyframes wheel{
+			from{}
+			to{background-position: -3200px}
+		}
+		/*▶가로등*/
+		div#lamp1{
+			width: 91px;
+			height: 177px;
+			background: url(bg/lamp.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -900px;
+			top: 48%;
+			z-index: 1;
+			animation: lamp 1s steps(2) infinite;
+		}
+		div#lamp2{
+			width: 91px;
+			height: 177px;
+			background: url(bg/lamp.png);
+			position: absolute;
+			right: 50%;
+			margin-right: -800px;
+			top: 48%;
+			z-index: 1;
+			animation: lamp 1s steps(2) infinite;
+		}
+		@keyframes lamp{
+			from{}
+			to{background-position: -182px}
+		}
+	/*--------------------kstory 컨텐츠--------------------*/
+		div#ferriswheel{
+			width: 700px;
+			height: 610px;
+			background: url(contents/ferriswheel.png);
+			left: 50%;
+			margin-left: -350px;
+			position: absolute;
+			bottom: 29%;
+			z-index: 3;
+			animation: ferriswheel 10s steps(16) infinite;
+		}
+		@keyframes ferriswheel{
+			from{}
+			to{background-position: -11200px}
+		}
+		/*kstory 컨텐츠 호버시*/
+		div#ferriswheel:hover{
+			width: 700px;
+			height: 610px;
+			background: url(contents/ferriswheel_on.png);
+			left: 50%;
+			margin-left: -350px;
+			bottom: 29%;
+			cursor: pointer;
+		}
+		/*자동차 ks_cha 캐릭터*/		
+		div#ks_cha{
+			width: 200px;
+			height: 100px;
+			background: url(contents/cha01.png);
+			position: absolute;
+			left: 13%;
+			top: 65%;
+			z-index: 99;
+			border:1px solid red;
+		}
+		div#fire{
+			width: 50px;
+			height: 30px;
+			position: absolute;
+			left: -45px;
+			bottom: 0;
+			animation: fire 1s infinite linear;
+		}
+		@keyframes fire{
+			0%{background: url(contents/fire01.png);}
+			25%{background: url(contents/fire02.png);}
+			50%{background: url(contents/fire03.png);}
+			75%{background: url(contents/fire02.png);}
+			100%{background: url(contents/fire01.png);}
+		}
+		/*kstory 말풍선 꾸미기*/
+		div#chat01{
+			width: 200px;
+			height: 80px;
+			background: url(contents/chat01.png);
+			position: absolute;
+			right: 50%;
+			margin-right: -515px;
+			top: 45%;
+			z-index: 3;
+			cursor: pointer;
+			animation: chat 1s infinite;
+		}
+		@keyframes chat{
+			0%{opacity: 0;}
+			30%{opacity: 1;}
+			70%{opacity: 1;}
+			100%{opacity: 0;}
+		}
+		div#gun{
+			width: 135px;
+			height: 140px;
+			background: url(contents/gun.png);
+			position: absolute;
+			right: 50%;
+			margin-right: -480px;
+			top: 53%;
+			z-index: 3;
+			animation: gun 1s steps(2) infinite;
+		}
+		@keyframes gun{
+			from{}
+			to{background-position: -270px}
+		}
+		/*----------kstory 꾸미기----------*/
+		/*▶풍선*/
+		div#ks_b1{
+			width: 27px;
+			height: 90px;
+			background: url(contents/balloon05.png);
+			position: absolute;
+			background-size: contain;
+			bottom: 85%;
+			left: 15%;
+			z-index: 1;
+			animation: ks_b1 3s infinite;
+		}
+		@keyframes ks_b1{
+			0%{bottom: 83%;}
+			50%{bottom: 85%;}
+			100%{bottom: 83%;}
+		}
+		div#ks_b2{
+			width: 33px;
+			height: 115px;
+			background: url(contents/balloon01.png);
+			position: absolute;
+			bottom: 80%;
+			left: 30%;
+			z-index: 1;
+			animation: ks_b2 4s infinite;
+		}
+		@keyframes ks_b2{
+			0%{bottom: 75%;}
+			50%{bottom: 80%;}
+			100%{bottom: 75%;}
+		}
+		div#ks_b3{
+			width: 33px;
+			height: 115px;
+			background: url(contents/balloon03.png);
+			position: absolute;
+			bottom: 85%;
+			right: 23%;
+			z-index: 1;
+			animation: ks_b3 3s infinite;
+		}
+		@keyframes ks_b3{
+			0%{bottom: 85%;}
+			50%{bottom: 90%;}
+			100%{bottom: 85%;}
+		}
+		/*▶구름*/
+		div#ks_c1{
+			width: 280px;
+			height: 55px;
+			background: url(contents/cloud05.png);
+			position: absolute;
+			top: 7%;
+			left: 3%;
+			animation: ks_c1 12s infinite;
+		}
+		@keyframes ks_c1{
+			0%{left: 3%;}
+			50%{left: 10%;}
+			100%{left: 3%;}
+		}
+		div#ks_c2{
+			width: 200px;
+			height: 50px;
+			background: url(contents/cloud04.png);
+			position: absolute;
+			top: 5%;
+			left: 48%;
+			animation: ks_c2 15s infinite;
+		}
+		@keyframes ks_c2{
+			0%{left: 43%;}
+			50%{left: 50%;}
+			100%{left: 43%;}
+		}
+		div#ks_c3{
+			width: 170px;
+			height: 45px;
+			background: url(contents/cloud02.png);
+			position: absolute;
+			top: 10%;
+			right: 3%;
+			animation: ks_c3 12s infinite;
+		}
+		@keyframes ks_c3{
+			0%{right: 8%;}
+			50%{right: 3%;}
+			100%{right: 8%;}
+		}
+		/*kstory 모달창*/
+		div#ks_wrap_mo{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			display: none;
+		}
+		div#ks_banner{
+			width: 1102px;
+			height: 174px;
+			background: url(modar/ks_banner.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -551px;
+			top: -0.5%;
+			z-index:7;
+		}
+		div#ks_mo{
+			width: 950px;
+			height: 400px;
+			background: url(modar/ks_mo.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -475px;
+			bottom: 28%;
+			z-index: 6;
+		}
+		/*인디케이터 버튼*/
+		div#bar{
+			width: 585px;
+			height: 20px;
+			background: url(modar/bar.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -292.5px;
+			bottom: 23%;
+			z-index: 6;
+		}
+		ul#btn_set{
+			width: 500px;
+			height: 38px;
+			position: absolute;
+			left: 50%;
+			bottom: 21.4%;
+			margin-left: -255px;
+			z-index: 7;
+		}
+		/*버튼 스타일*/
+		ul#btn_set li:nth-child(1){
+			width: 38px;
+			height: 38px;
+			background: url(modar/btn_set.png);
+			position: absolute;
+			z-index: 10;
+			left: 0;
+			top: 0;
+			float: left;
+			cursor: pointer;
+		}
+		ul#btn_set li:nth-child(2){
+			width: 38px;
+			height: 38px;
+			background: url(modar/btn_set.png);
+			background-position: -38px;
+			position: absolute;
+			z-index: 10;
+			left: 23%;
+			top: 0;
+			float: left;
+			cursor: pointer;
+		}
+		ul#btn_set li:nth-child(3){
+			width: 38px;
+			height: 38px;
+			background: url(modar/btn_set.png);
+			background-position: -76px;
+			position: absolute;
+			z-index: 10;
+			left: 46%;
+			top: 0;
+			float: left;
+			cursor: pointer;
+		}
+		ul#btn_set li:nth-child(4){
+			width: 38px;
+			height: 38px;
+			background: url(modar/btn_set.png);
+			background-position: -114px;
+			position: absolute;
+			z-index: 10;
+			left: 69%;
+			top: 0;
+			float: left;
+			cursor: pointer;
+		}
+		ul#btn_set li:nth-child(5){
+			width: 38px;
+			height: 38px;
+			background: url(modar/btn_set.png);
+			background-position: -152px;
+			position: absolute;
+			z-index: 10;
+			left: 92%;
+			top: 0;
+			float: left;
+			cursor: pointer;
+		}
+		#ks_carousel{
+			width: 590px;
+			height: 330px;
+			position: absolute;
+			left: 50%;
+			margin-left: -380px;
+			max-height: 330px;
+			top: 8%;
+			overflow: hidden;
+		}
+		/*버튼 활성화 스타일*/
+		ul#btn_set li.active a{
+			width: 21px;
+			height: 21px;
+			background: url(modar/button_on.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -10.5px;
+			top: 23%;
+			z-index: 11;
+			opacity: 0.7;
+		}
+		/*스토리보드*/
+		#list li{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 100%;
+		}
+		#list li:nth-child(1){
+			background: url(modar/story1.png);
+			left: 0;
+		}
+		#list li:nth-child(2){
+			background: url(modar/story2.png) no-repeat;
+		}
+		#list li:nth-child(3){
+			background: url(modar/story3.png);
+		}
+		#list li:nth-child(4){
+			background: url(modar/story4.png);
+		}
+		#list li:nth-child(5){
+			background: url(modar/story5.png);
+		}
+		/*버튼 클릭했을 때*/
+
+		input#button1:checked~#ks_carousel li:nth-child(1){
+			right: 0%;
+		}
+		input#button2:checked~#ks_carousel li:nth-child(2){
+			right: 0%;
+		}
+		input#button3:checked~#ks_carousel li:nth-child(3){
+			right: 0%;
+		}
+		input#button4:checked~#ks_carousel li:nth-child(4){
+			right: 0%;
+		}
+		input#button5:checked~#ks_carousel li:nth-child(5){
+			right: 0%;
+		}
+		/*나가기*/
+		div#ks_exit{
+			width: 100px;
+			height: 43px;
+			background: url(modar/exit.png);
+			position: absolute;
+			right: 50%;
+			margin-right: -500px;
+			bottom: 200px;
+			cursor: pointer;
+			z-index: 11;
+			animation: twinkle 2s steps(2) infinite;
+		}
+		@keyframes twinkle{
+			from{}
+			to{background-position: -200px}
+		}
+	/*--------------------kbrand 컨텐츠--------------------*/
+		div#viking{
+			width: 650px;
+			height: 600px;
+			background: url(contents/viking.png);
+			left: 50%;
+			margin-left: -350px;
+			position: absolute;
+			bottom: 30%;
+			z-index: 3;
+			animation: viking 4s steps(16) infinite;
+		}
+		@keyframes viking{
+			from{}
+			to{background-position: -10400px}
+		}
+		/*kbrand 호버시*/
+		div#viking:hover{
+			width: 650px;
+			height: 600px;
+			background: url(contents/viking_on.png);
+			left: 50%;
+			margin-left: -350px;
+			bottom: 30%;
+			cursor: pointer;
+		}
+		/*kbrand 캐릭터*/
+		div#wrap2{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			left: 2%;
+			top: 0;
+		}
+		div#kb_cha{
+			width: 200px;
+			height: 100px;
+			background: url(contents/cha02.png);
+			position: sticky;
+			left: 2%;
+			top: 65%;
+			z-index: 3;
+		}
+		div#gas{
+			width: 24px;
+			height: 19px;
+			position: absolute;
+			left: -20px;
+			bottom: 0;
+			animation: gas 1s infinite linear;
+		}
+		@keyframes gas{
+			0%{background: url(contents/gas03.png);}
+			50%{background: url(contents/gas02.png); left: -25px; bottom: 3px;}
+			100%{background: url(contents/gas01.png); left: -35px; bottom: 5px;}
+		}
+		/*kbrand 말풍선 꾸미기*/
+		div#chat02{
+			width: 200px;
+			height: 80px;
+			background: url(contents/chat02.png);
+			position: absolute;
+			right: 50%;
+			margin-right: -490px;
+			top: 45%;
+			z-index: 3;
+			cursor: pointer;
+			animation: chat 1s infinite;
+		}
+		/*----------kbrand 꾸미기----------*/
+		/*▶풍선*/
+		div#kb_b1{
+			width: 33px;
+			height: 115px;
+			background: url(contents/balloon04.png);
+			position: absolute;
+			left: 5%;
+			top: 5%;
+			z-index: 2;
+			animation: kb_b1 3s infinite;
+		}
+		@keyframes kb_b1{
+			0%{top: 5%;}
+			50%{top: 9%;}
+			0%{top: 5%;}
+		}
+		div#kb_b2{
+			width: 22px;
+			height: 75px;
+			background: url(contents/balloon02.png);
+			position: absolute;
+			background-size: contain;
+			left: 35%;
+			top: 15%;
+			z-index: 2;
+			animation: kb_b2 3s infinite;
+		}
+		@keyframes kb_b2{
+			0%{top: 10%;}
+			50%{top: 5%;}
+			100%{top: 10%;}
+		}
+		div#kb_b3{
+			width: 33px;
+			height: 115px;
+			background: url(contents/balloon05.png);
+			position: absolute;
+			right: 25%;
+			top: 10%;
+			z-index: 2;
+			animation: kb_b3 3.5s infinite;
+		}
+		@keyframes kb_b3{
+			0%{top: 10%;}
+			50%{top: 14%;}
+			0%{top: 10%;}
+		}
+		/*▶구름*/
+		div#kb_c1{
+			width: 140px;
+			height: 30px;
+			background: url(contents/cloud01.png);
+			position: absolute;
+			left: 10%;
+			top: 10%;
+			z-index: 1;
+			animation: kb_c1 10s infinite;
+		}
+		@keyframes kb_c1{
+			0%{left: 8%;}
+			50%{left: 15%;}
+			100%{left: 8%;}
+		}
+		div#kb_c2{
+			width: 170px;
+			height: 45px;
+			background: url(contents/cloud02.png);
+			position: absolute;
+			right: 15%;
+			top: 7%;
+			z-index: 1;
+			animation: kb_c2 10s infinite;
+		}
+		@keyframes kb_c2{
+			0%{right: 8%;}
+			50%{right: 15%;}
+			100%{right: 8%;}
+		}
+		/*▶팝콘*/
+		div#popcorn{
+			width: 110px;
+			height: 130px;
+			background: url(contents/popcorn.png);
+			position: absolute;
+			right: 50%;
+			margin-right: -450px;
+			top: 54.5%;
+			z-index: 1;
+			animation: popcorn 1s steps(2) infinite;
+		}
+		@keyframes popcorn{
+			from{}
+			to{background-position: -220px}
+		}
+		/*kbrand 모달창*/
+		div#kb_wrap_mo{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			display: none;
+		}
+		div#kb_banner{
+			width: 1102px;
+			height: 174px;
+			background: url(modar/kb_banner.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -551px;
+			top: -0.5%;
+			z-index: 11;
+		}
+		/*▶초콜릿*/
+		div#chocolate1{
+			width: 133px;
+			height: 133px;
+			background: url(modar/kinder01.png) no-repeat;
+			position: absolute;
+			background-size: contain;
+			left: 50%;
+			margin-left: -66.5px;
+			bottom: 37%;
+		}
+		div#chocolate2{
+			width: 133px;
+			height: 133px;
+			background: url(modar/kinder02.png) no-repeat;
+			position: absolute;
+			background-size: contain;
+			left: 50%;
+			margin-left: -66.5px;
+			bottom: 37%;
+		}
+		div#chocolate3{
+			width: 133px;
+			height: 133px;
+			background: url(modar/kinder03.png) no-repeat;
+			position: absolute;
+			background-size: contain;
+			left: 50%;
+			margin-left: -66.5px;
+			bottom: 37%;
+		}
+		div#chocolate4{
+			width: 133px;
+			height: 133px;
+			background: url(modar/kinder04.png) no-repeat;
+			position: absolute;
+			background-size: contain;
+			left: 50%;
+			margin-left: -66.5px;
+			bottom: 37%;
+		}
+		div#chocolate5{
+			width: 133px;
+			height: 133px;
+			background: url(modar/kinder05.png) no-repeat;
+			position: absolute;
+			background-size: contain;
+			left: 50%;
+			margin-left: -66.5px;
+			bottom: 37%;
+		}
+		/*▶상자*/
+		div#kb_box01{
+			width: 370px;
+			height: 180px;
+			position: absolute;
+			left: 50%;
+			margin-left: -700px;
+			bottom: 25%;
+			z-index: 11;
+			cursor: pointer;
+			animation: dung1 2.5s infinite;
+		}
+		@keyframes dung1{
+			0%{bottom: 25%;}
+			50%{bottom: 26%;}
+			100%{bottom: 25%;}
+		}
+		div#box01{
+			width: 370px;
+			height: 180px;
+			background: url(modar/kb_box01.png);
+			position: absolute;
+			left: 0;
+			bottom: 0;
+		}
+		div#kb_box02{
+			width: 370px;
+			height: 180px;
+			position: absolute;
+			left: 50%;
+			margin-left: -450px;
+			bottom: 35%;
+			z-index: 10;
+			cursor: pointer;
+			animation: dung2 3s infinite;
+		}
+		@keyframes dung2{
+			0%{bottom: 35%;}
+			50%{bottom: 36%;}
+			100%{bottom: 35%;}
+		}
+		div#box02{
+			width: 370px;
+			height: 180px;
+			background: url(modar/kb_box02.png);
+			position: absolute;
+			left: 0;
+			bottom: 0;
+		}
+		div#kb_box03{
+			width: 370px;
+			height: 180px;
+			position: absolute;
+			left: 50%;
+			margin-left: -190px;
+			bottom: 27%;
+			z-index: 11;
+			cursor: pointer;
+			animation: dung3 2.5s infinite;
+		}
+		@keyframes dung3{
+			0%{bottom: 27%;}
+			50%{bottom: 26%;}
+			100%{bottom: 27%;}
+		}
+		div#box03{
+			width: 370px;
+			height: 180px;
+			background: url(modar/kb_box03.png);
+			position: absolute;
+			left: 0;
+			bottom: 0;
+		}
+		div#kb_box04{
+			width: 370px;
+			height: 180px;
+			position: absolute;
+			right: 50%;
+			margin-right: -450px;
+			bottom: 33%;
+			z-index: 10;
+			cursor: pointer;
+			animation: dung4 3s infinite;
+		}
+		@keyframes dung4{
+			0%{bottom: 34%;}
+			50%{bottom: 33%;}
+			100%{bottom: 34%;}
+		}
+		div#box04{
+			width: 370px;
+			height: 180px;
+			background: url(modar/kb_box04.png);
+			position: absolute;
+		}
+		div#kb_box05{
+			width: 370px;
+			height: 180px;
+			position: absolute;
+			right: 50%;
+			margin-right: -690px;
+			bottom: 23%;
+			z-index: 10;
+			cursor: pointer;
+			animation: dung5 2.5s infinite;
+		}
+		@keyframes dung5{
+			0%{bottom: 23%;}
+			50%{bottom: 24%;}
+			100%{bottom: 23%;}
+		}
+		div#box05{
+			width: 370px;
+			height: 180px;
+			background: url(modar/kb_box05.png);
+			position: absolute;
+		}
+		/*▶상자 덮개*/
+		div#kb_box_cover01{
+			width: 180px;
+			height: 125px;
+			background: url(modar/kb_box_cover.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -590px;
+			bottom: 38%;
+			z-index: 13;
+			animation: cover01 2s infinite;
+		}
+		@keyframes cover01{
+			0%{transform:translateY(-30px)}
+			50%{transform:translateY(-50px)}
+			100%{transform:translateY(-30px)}
+		}
+		div#kb_box_cover02{
+			width: 180px;
+			height: 125px;
+			background: url(modar/kb_box_cover.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -340px;
+			bottom: 53%;
+			z-index: 13;
+			animation: cover02 2.5s infinite;
+		}
+		@keyframes cover02{
+			0%{transform:translateY(0px)}
+			50%{transform:translateY(20px)}
+			100%{transform:translateY(0px)}
+		}
+		div#kb_box_cover03{
+			width: 180px;
+			height: 125px;
+			background: url(modar/kb_box_cover.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -80px;
+			bottom: 45%;
+			z-index: 13;
+			animation: cover03 2s infinite;
+		}
+		@keyframes cover03{
+			0%{transform:translateY(0px)}
+			50%{transform:translateY(20px)}
+			100%{transform:translateY(0px)}
+		}
+		div#kb_box_cover04{
+			width: 180px;
+			height: 125px;
+			background: url(modar/kb_box_cover.png);
+			position: absolute;
+			right: 50%;
+			margin-right: -370px;
+			bottom: 51%;
+			z-index: 13;
+			animation: cover04 2.5s infinite;
+		}
+		@keyframes cover04{
+			0%{transform:translateY(0px)}
+			50%{transform:translateY(20px)}
+			100%{transform:translateY(0px)}
+		}
+		div#kb_box_cover05{
+			width: 180px;
+			height: 125px;
+			background: url(modar/kb_box_cover.png);
+			position: absolute;
+			right: 50%;
+			margin-right: -610px;
+			bottom: 41%;
+			z-index: 13;
+			animation: cover05 1.8s infinite;
+		}
+		@keyframes cover05{
+			0%{transform:translateY(0px)}
+			50%{transform:translateY(20px)}
+			100%{transform:translateY(0px)}
+		}
+		/*▶상품정보*/
+		div#information1{
+			width: 882px;
+			height: 644px;
+			background: url(modar/information01.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -441px;
+			bottom: 15%;
+			z-index: 20;
+			display: none;
+			overflow: hidden;
+		}
+		div#information2{
+			width: 882px;
+			height: 644px;
+			background: url(modar/information02.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -441px;
+			bottom: 15%;
+			z-index: 20;
+			display: none;
+			overflow: hidden;
+		}
+		div#information3{
+			width: 882px;
+			height: 644px;
+			background: url(modar/information03.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -441px;
+			bottom: 15%;
+			z-index: 20;
+			display: none;
+			overflow: hidden;
+		}
+		div#information4{
+			width: 882px;
+			height: 644px;
+			background: url(modar/information04.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -441px;
+			bottom: 15%;
+			z-index: 20;
+			display: none;
+			overflow: hidden;
+		}
+		div#information5{
+			width: 882px;
+			height: 644px;
+			background: url(modar/information05.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -441px;
+			bottom: 15%;
+			z-index: 20;
+			display: none;
+			overflow: hidden;
+		}
+		/*▶장난감 보기*/
+		div#go{
+			width: 185px;
+			height: 80px;
+			background: url(modar/mk_option.png) no-repeat;
+			background-position: -694.67px;
+			position: absolute;
+			right: 50%;
+			margin-right: -600px;
+			display: none;
+			z-index: 101;
+			top: 50%;
+			cursor: pointer;
+			animation: op 1.5s infinite;
+		}
+		/*▶쇼핑*/
+		div.wrap_sho{
+			width: 421px;
+			height: 447px;
+			position: absolute;
+			left: 50%;
+			overflow: hidden;
+			margin-left: -7px;
+			bottom: 4%;
+			z-index: 21;
+		}
+		/*▶buynow*/
+		div#buynow1{
+			width: 125px;
+			height: 24px;
+			background: url(modar/buynow.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -150px;
+			top: 67%;
+			cursor: pointer;
+			animation: buy 2s steps(8) infinite;
+		}
+		@keyframes buy{
+			from{}
+			to{background-position: -1000px;}
+		}
+		div#buynow2{
+			width: 125px;
+			height: 24px;
+			background: url(modar/buynow.png);
+			position: absolute;
+			left: 50%;
+			margin-left: 30px;
+			top: 67%;
+			cursor: pointer;
+			animation: buy 2s steps(8) infinite;
+		}
+		div#buynow3{
+			width: 125px;
+			height: 24px;
+			background: url(modar/buynow.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -150px;
+			top: 67%;
+			cursor: pointer;
+			animation: buy 2s steps(8) infinite;
+		}
+		div#buynow4{
+			width: 125px;
+			height: 24px;
+			background: url(modar/buynow.png);
+			position: absolute;
+			left: 50%;
+			margin-left: 30px;
+			top: 67%;
+			cursor: pointer;
+			animation: buy 2s steps(8) infinite;
+		}
+		div#buynow5{
+			width: 125px;
+			height: 24px;
+			background: url(modar/buynow.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -62.5px;
+			top: 67%;
+			cursor: pointer;
+			animation: buy 2s steps(8) infinite;
+		}
+		div#buynow6{
+			width: 125px;
+			height: 24px;
+			background: url(modar/buynow.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -150px;
+			top: 67%;
+			cursor: pointer;
+			animation: buy 2s steps(8) infinite;
+		}
+		div#buynow7{
+			width: 125px;
+			height: 24px;
+			background: url(modar/buynow.png);
+			position: absolute;
+			left: 50%;
+			margin-left: 30px;
+			top: 67%;
+			cursor: pointer;
+			animation: buy 2s steps(8) infinite;
+		}
+		div#buynow8{
+			width: 125px;
+			height: 24px;
+			background: url(modar/buynow.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -195px;
+			top: 67%;
+			cursor: pointer;
+			animation: buy 2s steps(8) infinite;
+		}
+		div#buynow9{
+			width: 125px;
+			height: 24px;
+			background: url(modar/buynow.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -62.5px;
+			top: 67%;
+			cursor: pointer;
+			animation: buy 2s steps(8) infinite;
+		}
+		div#buynow10{
+			width: 125px;
+			height: 24px;
+			background: url(modar/buynow.png);
+			position: absolute;
+			left: 50%;
+			margin-left: 70px;
+			top: 67%;
+			cursor: pointer;
+			animation: buy 2s steps(8) infinite;
+		}
+		/*▶쇼핑정보*/
+		div#shopping1{
+			width: 421px;
+			height: 447px;
+			background: url(modar/shopping1.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -210.5px;
+			top: 90%;
+		}
+		div#shopping1_1{
+			width: 421px;
+			height: 447px;
+			background: url(modar/shopping2.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -210.5px;
+			top: 90%;
+		}
+		div#shopping2{
+			width: 421px;
+			height: 447px;
+			background: url(modar/shopping3.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -210.5px;
+			top: 90%;
+		}
+		div#shopping2_1{
+			width: 421px;
+			height: 447px;
+			background: url(modar/shopping4.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -210.5px;
+			top: 90%;
+		}
+		div#shopping3{
+			width: 421px;
+			height: 447px;
+			background: url(modar/shopping5.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -210.5px;
+			top: 90%;
+		}
+		div#shopping4{
+			width: 421px;
+			height: 447px;
+			background: url(modar/shopping6.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -210.5px;
+			top: 90%;
+		}
+		div#shopping4_1{
+			width: 421px;
+			height: 447px;
+			background: url(modar/shopping7.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -210.5px;
+			top: 90%;
+		}
+		div#shopping5{
+			width: 421px;
+			height: 447px;
+			background: url(modar/shopping8.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -210.5px;
+			top: 90%;
+		}
+		div#shopping5_1{
+			width: 421px;
+			height: 447px;
+			background: url(modar/shopping9.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -210.5px;
+			top: 90%;
+		}
+		div#shopping5_2{
+			width: 421px;
+			height: 447px;
+			background: url(modar/shopping10.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -210.5px;
+			top: 90%;
+		}
+		/*▶닫기*/
+		div#close1{
+			width: 40px;
+			height: 30px;
+			cursor: pointer;
+			position: absolute;
+			right: 10px;
+			bottom: 10px;
+		}
+		div#close2{
+			width: 40px;
+			height: 30px;
+			cursor: pointer;
+			position: absolute;
+			right: 10px;
+			bottom: 10px;
+		}
+		div#close3{
+			width: 40px;
+			height: 30px;
+			cursor: pointer;
+			position: absolute;
+			right: 10px;
+			bottom: 10px;
+		}
+		div#close4{
+			width: 40px;
+			height: 30px;
+			cursor: pointer;
+			position: absolute;
+			right: 10px;
+			bottom: 10px;
+		}
+		div#close5{
+			width: 40px;
+			height: 30px;
+			cursor: pointer;
+			position: absolute;
+			right: 10px;
+			bottom: 10px;
+		}
+		div#close6{
+			width: 40px;
+			height: 30px;
+			cursor: pointer;
+			position: absolute;
+			right: 10px;
+			bottom: 10px;
+		}
+		div#close7{
+			width: 40px;
+			height: 30px;
+			cursor: pointer;
+			position: absolute;
+			right: 10px;
+			bottom: 10px;
+		}
+		div#close8{
+			width: 40px;
+			height: 30px;
+			cursor: pointer;
+			position: absolute;
+			right: 10px;
+			bottom: 10px;
+		}
+		div#close9{
+			width: 40px;
+			height: 30px;
+			cursor: pointer;
+			position: absolute;
+			right: 10px;
+			bottom: 10px;
+		}
+		div#close10{
+			width: 40px;
+			height: 30px;
+			cursor: pointer;
+			position: absolute;
+			right: 10px;
+			bottom: 10px;
+		}
+		/*▶상품클릭&화살표*/
+		div#acc{
+			width: 150px;
+			height: 58px;
+			background: url(modar/acc.png);
+			position: absolute;
+			z-index: 10;
+			display: none;
+			animation: op 2s infinite;
+		}
+		div#finger{
+			width: 73px;
+			height: 58px;
+			background: url(modar/acc.png);
+			position: relative;
+			bottom: 50%;
+			z-index: 11;
+			left: 50%;
+			background-position: -149px;
+			display: none;
+		}
+		div#finger1{
+			width: 73px;
+			height: 58px;
+			background: url(modar/acc.png);
+			position: absolute;
+			bottom: 50%;
+			z-index: 11;
+			left: 50%;
+			margin-left: -130px;
+			transform: rotateY(180deg);
+			background-position: -149px;
+			display: none;
+		}
+		@keyframes op{
+			0%{opacity: 0;}
+			50%{opacity: 1;}
+			100%{opacity: 0;}
+		}
+		/*▶나가기*/
+		div#kb_exit{
+			width: 100px;
+			height: 43px;
+			background: url(modar/exit.png);
+			position: absolute;
+			right: 50%;
+			margin-right: -600px;
+			bottom: 150px;
+			cursor: pointer;
+			z-index: 11;
+			animation: twinkle 2s steps(2) infinite;
+		}
+		@keyframes twinkle{
+			from{}
+			to{background-position: -200px}
+		}
+		/*▶엑스버튼*/
+		div#btn{
+			width: 33.64px;
+			height: 58px;
+			background: url(modar/acc.png);
+			background-position: -223px;
+			position: absolute;
+			z-index: 20;
+			right: 50%;
+			top: 28%;
+			margin-right: -420px;
+			cursor: pointer;
+			display: none;
+		}
+	/*--------------------magickinder 콘텐츠--------------------*/
+		div#carousel{
+			width: 700px;
+			height: 600px;
+			background: url(contents/carousel.png);
+			position: absolute;
+			background-size: cover;
+			left: 50%;
+			bottom: 28%;
+			margin-left: -350px;
+			z-index: 3;
+			cursor: pointer;
+			animation: carousel 2s steps(4) infinite;
+		}
+		@keyframes carousel{
+			from{}
+			to{background-position: -2800px}
+		}
+		/*magickinder 호버시*/
+		div#carousel:hover{
+			width: 700px;
+			height: 600px;
+			background: url(contents/carousel_on.png);
+			position: absolute;
+			left: 50%;
+			bottom: 28%;
+			margin-left: -350px;
+		}
+		/*magickinder 캐릭터*/
+		div#wrap3{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			left: 2%;
+			top: 0;
+		}
+		div#mk_cha{
+			width: 320px;
+			height: 140px;
+			background: url(contents/cha03.png);
+			position: sticky;
+			left: 2%;
+			z-index: 3;
+			top: 61%;
+		}
+		div#mk_cha_1{
+			width: 80px;
+			height: 60px;
+			position: absolute;
+			right: 35px;
+			top: -35px;
+			animation: smoke 2s infinite;
+		}
+		@keyframes smoke{
+			0%{background: url(contents/cha03_01.png);}
+			25%{background: url(contents/cha03_02.png);}
+			50%{background: url(contents/cha03_03.png);}
+			75%{background: url(contents/cha03_04.png);}
+			100%{background: url(contents/cha03_05.png);}
+		}
+		/*magickinder 말풍선 꾸미기*/
+		div#chat03{
+			width: 200px;
+			height: 80px;
+			background: url(contents/chat03.png);
+			position: absolute;
+			right: 50%;
+			margin-right: -510px;
+			top: 41%;
+			z-index: 3;
+			cursor: pointer;
+			animation: chat 1s infinite;
+		}
+		/*----------magickinder 꾸미기----------*/
+		/*▶풍선*/
+		div#mk_b1{
+			width: 33px;
+			height: 115px;
+			background: url(contents/balloon01.png);
+			position: absolute;
+			top: 5%;
+			left: 0;
+			animation: mk_b1 3s infinite;
+		}
+		@keyframes mk_b1{
+			0%{top: 5%;}
+			50%{top: 10%;}
+			100%{top: 5%;}
+		}
+		div#mk_b2{
+			width: 22px;
+			height: 75px;
+			background: url(contents/balloon03.png);
+			position: absolute;
+			background-size: contain;
+			top: 2%;
+			left: 30%;
+			animation: mk_b2 3s infinite;
+		}
+		@keyframes mk_b2{
+			0%{top: 8%;}
+			50%{top: 2%;}
+			100%{top: 8%;}
+		}
+		div#mk_b3{
+			width: 27px;
+			height: 90px;
+			background: url(contents/balloon04.png);
+			position: absolute;
+			background-size: contain;
+			top: 2%;
+			right: 30%;
+			animation: mk_b3 2.5s infinite;
+		}
+		@keyframes mk_b3{
+			0%{top: 12%;}
+			50%{top: 8%;}
+			100%{top: 12%;}
+		}
+		div#mk_b4{
+			width: 33px;
+			height: 115px;
+			background: url(contents/balloon02.png);
+			position: absolute;
+			top: 2%;
+			right: 0;
+			animation: mk_b4 3s infinite;
+		}
+		@keyframes mk_b4{
+			0%{top: 8%;}
+			50%{top: 12%;}
+			100%{top: 8%;}
+		}
+		/*▶별*/
+		div#mk_s1{
+			width: 1920px;
+			height: 256px;
+			background: url(contents/mk_s01.png);
+			position: absolute;
+			animation: mk_s 2s infinite;
+		}
+		@keyframes mk_s{
+			0%{opacity: 1;}
+			50%{opacity: 0;}
+			100%{opacity: 1;}
+		}
+		div#mk_s2{
+			width: 1920px;
+			height: 256px;
+			background: url(contents/mk_s02.png);
+			position: absolute;
+			animation: mk_s 3s infinite;
+		}
+		div#mk_s3{
+			width: 1920px;
+			height: 256px;
+			background: url(contents/mk_s03.png);
+			position: absolute;
+			animation: mk_s 1s infinite;
+		}
+		/*▶써커스*/
+		div#circus{
+			width: 139.5px;
+			height: 168px;
+			background: url(contents/circus.png);
+			position: absolute;
+			right: 50%;
+			margin-right: -480px;
+			top: 50%;
+			z-index: 1;
+			animation: circus 1s steps(2) infinite;
+		}
+		@keyframes circus{
+			from{}
+			to{background-position: -280px}
+		}
+		/*magickinder 모달창*/
+		div#mk_wrap_mo{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			display: none;
+			z-index: 6;
+		}
+		div#mk_banner{
+			width: 1102px;
+			height: 162px;
+			background: url(modar/mk_banner.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -551px;
+			top: -0.5%;
+			z-index:7;
+		}
+		div#googleplay a{
+			width: 210px;
+			height: 110px;
+			background: url(modar/mk_option.png);
+			position: absolute;
+			right: 50%;
+			margin-right: -537px;
+			top: 40%;
+			cursor: pointer;
+		}
+		div#googleplay:hover a{
+			width: 210px;
+			height: 110px;
+			background: url(modar/mk_option.png);
+			position: absolute;
+			right: 50%;
+			margin-right: -660px;
+			top: 40%;
+			cursor: pointer;
+		}
+		div#appstore a{
+			width: 210px;
+			height: 110px;
+			background: url(modar/mk_option.png);
+			position: absolute;
+			background-position: -211px;
+			right: 50%;
+			margin-right: -538px;
+			top: 50%;
+			cursor: pointer;
+		}
+		div#appstore:hover a{
+			width: 210px;
+			height: 110px;
+			background: url(modar/mk_option.png);
+			position: absolute;
+			background-position: -211px;
+			right: 50%;
+			margin-right: -645px;
+			top: 50%;
+			cursor: pointer;
+		}
+		div#point{
+			width: 274px;
+			height: 110px;
+			background: url(modar/mk_option.png);
+			position: absolute;
+			background-position: -421px;
+			right: 50%;
+			margin-right: -820px;
+			top: 30%;
+			animation: op 2s infinite;
+		}
+		div#mk_mo{
+			width: 946px;
+			height: 515px;
+			background: url(modar/map.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -473px;
+			top: 23%;
+			z-index: 7;
+		}
+		div#mk_box{
+			width: 860px;
+			height: 430px;
+			position: absolute;
+			left: 50%;
+			margin-left: -425px;
+			top: 11.5%;
+			overflow: auto;
+		}
+		div#mk_img{
+			width: 850px;
+			height: 1400px;
+			background: url(modar/mk_board.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -425px;
+		}
+		div#mk_exit{
+			width: 100px;
+			height: 43px;
+			background: url(modar/exit.png);
+			position: absolute;
+			right: 50%;
+			margin-right: -500px;
+			bottom: 200px;
+			cursor: pointer;
+			z-index: 11;
+			animation: twinkle 2s steps(2) infinite;
+		}
+		@keyframes twinkle{
+			from{}
+			to{background-position: -200px}
+		}
+	/*--------------------kmovie 콘텐츠--------------------*/
+		div#billboard{
+			width: 650px;
+			height: 600px;
+			background: url(contents/billboard.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -325px;
+			animation: billboard .5s steps(2) infinite;
+			z-index: 3;
+			cursor: pointer;
+			bottom: 31.5%;
+		}
+		@keyframes billboard{
+			from{}
+			to{background-position: -1300px}
+		}
+	/*--------------------이벤트 콘텐츠--------------------*/
+		/*▶아이스크림*/
+		div#icecream{
+			width: 110px;
+			height: 135px;
+			background: url(contents/icecream.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -565px;
+			bottom: 33%;
+			z-index: 3;
+			cursor: pointer;
+			animation: ice 1s steps(2) infinite;
+		}
+		@keyframes ice{
+			from{}
+			to{background-position: -220px}
+		}
+		/*▶말풍선*/
+		div#chat04{
+			width: 200px;
+			height: 80px;
+			background: url(contents/chat04.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -607px;
+			bottom: 52%;
+			z-index: 3;
+			cursor: pointer;
+			animation: chat 1s infinite;
+		}
+		/*▶다트*/
+		div#dart{
+			width: 145px;
+			height: 125px;
+			background: url(contents/dart.png);
+			position: absolute;
+			right: 50%;
+			margin-right: -565px;
+			bottom: 33%;
+			cursor: pointer;
+			z-index: 3;
+		}
+		div#arrow{
+			width: 100px;
+			height: 80px;
+			background: url(contents/arrow.png);
+			position: absolute;
+			right: -12.5px;
+			bottom: 6px;
+			animation: arrow 1.5s steps(5) infinite;
+		}
+		@keyframes arrow{
+			from{}
+			to{background-position: -500px}
+		}
+		/*▶말풍선*/
+		div#chat05{
+			width: 210px;
+			height: 80px;
+			background: url(contents/chat05.png);
+			position: absolute;
+			right: 50%;
+			margin-right: -595px;
+			bottom: 51%;
+			z-index: 3;
+			cursor: pointer;
+			animation: chat 1s infinite;
+		}
+		/*▶이벤트창1*/
+		div#event01{
+			width: 576px;
+			height: 771px;
+			background: url(modar/event1.png);
+			left: 50%;
+			margin-left: -800px;
+			position: absolute;
+			z-index: 3;
+			top: 7%;
+			display: none;
+		}
+		select#hope{
+			width: 350px;
+			height: 40px;
+			position: absolute;
+			left: 50%;
+			margin-left: -100px;
+			top: 240px;
+			font-size: 15px;
+		}
+		input#age{
+			width: 350px;
+			height: 40px;
+			position: absolute;
+			left: 50%;
+			margin-left: -120px;
+			top: 460px;
+			font-size: 15px;
+		}
+		textarea#wish{
+			width: 500px;
+			height: 100px;
+			position: absolute;
+			left: 50%;
+			margin-left: -250px;
+			top: 530px;
+			resize: none;
+			font-size: 2em;
+		}
+		div#event_box1{
+			width: 370px;
+			height: 77px;
+			position: absolute;
+			left: 50%;
+			bottom: 5%;
+			margin-left: -185px;
+			cursor: pointer;
+		}
+		/*▶이벤트창2*/
+		div#event02{
+			width: 426px;
+			height: 835px;
+			background: url(modar/event2.png);
+			right: 50%;
+			margin-right: -800px;
+			position: absolute;
+			z-index: 4;
+			top: 7%;
+			display: none;
+		}
+		input#serial{
+			width: 350px;
+			height: 50px;
+			position: absolute;
+			left: 50%;
+			margin-left: -175px;
+			top: 200px;
+			font-size: 2em;
+		}
+		div#event_box2{
+			width: 280px;
+			height: 62px;
+			position: absolute;
+			left: 50%;
+			top: 31.7%;
+			margin-left: -140px;
+			cursor: pointer;
+		}
+		/*▶나가기*/
+		div#event_btn01{
+			width: 33.64px;
+			height: 58px;
+			background: url(modar/acc.png);
+			background-position: -223px;
+			position: absolute;
+			z-index: 20;
+			cursor: pointer;
+			display: none;
+		}
+		div#event_btn02{
+			width: 33.64px;
+			height: 58px;
+			background: url(modar/acc.png);
+			background-position: -223px;
+			position: absolute;
+			z-index: 20;
+			cursor: pointer;
+			display: none;
+		}
+		/*kmovie 캐릭터*/
+		div#wrap4{
+			position: absolute;
+			width: 100%;
+			height: 140px;
+			left: 0;
+			bottom: 8%;
+			animation: wrap4 2s infinite;
+		}
+		@keyframes wrap4{
+			0%{bottom: 8%;}
+			50%{bottom: 8.5%;}
+			100%{bottom: 8%;}
+		}
+		div#km_cha{
+			width: 250px;
+			height: 140px;
+			position: sticky;
+			left: 0;
+			bottom: 0;
+			background: url(contents/cha04.png);
+			z-index: 2;
+		}
+		/*----------kmovie 꾸미기----------*/
+		/*▶불꽃*/
+		div#firework1{
+			width: 80px;
+			height: 170px;
+			background: url(contents/firework01.png);
+			animation: firework1 1.5s steps(9) infinite;
+			position: absolute;
+			left: 15%;
+		}
+		@keyframes firework1{
+			0%{background-position: 0px}
+			15%{background-position: 0px}
+			100%{background-position: -720px}
+		}
+		div#firework2{
+			width: 150px;
+			height: 300px;
+			background: url(contents/firework02.png);
+			animation: firework2 1.8s steps(8) infinite;
+			position: absolute;
+			left: 10%;
+		}
+		@keyframes firework2{
+			0%{background-position: 0px}
+			15%{background-position: 0px}
+			100%{background-position: -1200px}
+		}
+		div#firework3{
+			width: 150px;
+			height: 300px;
+			background: url(contents/firework03.png);
+			animation: firework3 1.8s steps(9) infinite;
+			position: absolute;
+			right: 18%;
+		}
+		@keyframes firework3{
+			0%{background-position: 0px}
+			15%{background-position: 0px}
+			100%{background-position: -1350px}
+		}
+		div#firework4{
+			width: 240px;
+			height: 500px;
+			background: url(contents/firework04.png);
+			animation: firework4 2s steps(10) infinite;
+			position: absolute;
+			left: 50%;
+			top: -10%;
+		}
+		@keyframes firework4{
+			0%{background-position: 0px}
+			15%{background-position: 0px}
+			100%{background-position: -2400px}
+		}
+		/*▶별*/
+		div#km_s1{
+			width: 1920px;
+			height: 256px;
+			background: url(contents/km_s01.png);
+			position: absolute;
+			animation: km_s1 2s infinite;
+		}
+		@keyframes km_s1{
+			0%{opacity: 1;}
+			50%{opacity: 0;}
+			100%{opacity: 1;}
+		}
+		div#km_s2{
+			width: 1920px;
+			height: 256px;
+			background: url(contents/km_s03.png);
+			position: absolute;
+			animation: km_s2 3s infinite;
+		}
+		@keyframes km_s2{
+			0%{opacity: 1;}
+			50%{opacity: 0;}
+			100%{opacity: 1;}
+		}
+		div#km_s3{
+			width: 1920px;
+			height: 256px;
+			background: url(contents/km_s02.png);
+			position: absolute;
+			animation: km_s3 1s infinite;
+		}
+		@keyframes km_s3{
+			0%{opacity: 1;}
+			50%{opacity: 0;}
+			100%{opacity: 1;}
+		}
+		/*▶가로등*/
+		div#lamp3{
+			width: 91px;
+			height: 177px;
+			background: url(bg/lamp.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -900px;
+			top: 48%;
+			z-index: 1;
+			animation: lamp 1s steps(2) infinite;
+		}
+		div#lamp4{
+			width: 91px;
+			height: 177px;
+			background: url(bg/lamp.png);
+			position: absolute;
+			right: 50%;
+			margin-right: -700px;
+			top: 48%;
+			z-index: 1;
+			animation: lamp 1s steps(2) infinite;
+		}
+	/*--------------------물결--------------------*/
+		/*위아래*/
+		div#wave1_pa{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			overflow: hidden;
+			z-index: 2;
+			animation: wave1_pa 2s infinite linear;
+		}
+		@keyframes wave1_pa{
+			0%{bottom: 2%;}
+			50%{bottom: 3%;}
+			100%{bottom: 2%;}
+		}
+		div#wave2_pa{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			z-index: 2;
+			animation: wave2_pa 2s infinite linear;
+		}
+		@keyframes wave2_pa{
+			0%{bottom: 3%;}
+			50%{bottom: 2%;}
+			100%{bottom: 3%;}
+		}
+		/*옆으로*/
+		div#wave1{
+			width: 428px;
+			height: 45px;
+			background: url(contents/wave01.png);
+			position: absolute;
+			bottom: 5%;
+			z-index: 2;
+			animation: wave1 30s infinite linear;
+		}
+		@keyframes wave1{
+			0%{left: 3%;}
+			50%{left: 10%;}
+			100%{left: 3%;}
+		}
+		div#wave2{
+			width: 428px;
+			height: 45px;
+			background: url(contents/wave02.png);
+			position: absolute;
+			bottom: 1%;
+			left: 3%;
+			z-index: 2;
+			animation: wave2 40s infinite linear;
+		}
+		@keyframes wave2{
+			0%{left: 15%;}
+			50%{left: 25%;}
+			100%{left: 15%;}
+		}
+		div#wave3{
+			width: 428px;
+			height: 45px;
+			background: url(contents/wave01.png);
+			position: absolute;
+			bottom: 4%;
+			left: 30%;
+			z-index: 2;
+			animation: wave3 40s infinite linear;
+		}
+		@keyframes wave3{
+			0%{left: 30%;}
+			50%{left: 40%;}
+			100%{left: 30%;}
+		}
+		div#wave4{
+			width: 428px;
+			height: 45px;
+			background: url(contents/wave02.png);
+			position: absolute;
+			bottom: 1.5%;
+			left: 45%;
+			z-index: 2;
+			animation: wave4 40s infinite linear;
+		}
+		@keyframes wave4{
+			0%{left: 45%;}
+			50%{left: 55%;}
+			100%{left: 45%;}
+		}
+		div#wave5{
+			width: 428px;
+			height: 45px;
+			background: url(contents/wave01.png);
+			position: absolute;
+			bottom: 4%;
+			left: 65%;
+			z-index: 2;
+			animation: wave5 40s infinite linear;
+		}
+		@keyframes wave5{
+			0%{left: 60%;}
+			50%{left: 70%;}
+			100%{left: 60%;}
+		}
+		div#wave6{
+			width: 428px;
+			height: 45px;
+			background: url(contents/wave02.png);
+			position: absolute;
+			bottom: 4%;
+			left: 75%;
+			z-index: 2;
+			animation: wave6 40s infinite linear;
+		}
+		@keyframes wave6{
+			0%{left: 75%;}
+			50%{left: 85%;}
+			100%{left: 75%;}
+		}
+		div#wave7{
+			width: 428px;
+			height: 45px;
+			background: url(contents/wave02.png);
+			position: absolute;
+			bottom: 0;
+			left: 65%;
+			z-index: 2;
+			animation: wave7 40s infinite linear;
+		}
+		@keyframes wave7{
+			0%{left: 85%;}
+			50%{left: 100%;}
+			100%{left: 85%;}
+		}
+		/*모달창 검은 배경*/
+		div#black01{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			z-index: 5;
+			display: none;
+		}
+		div#black02{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			z-index: 15;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrapper">
+		<!-- 메인 -->
+		<section id="main">
+			<!-- 배경 꾸미기 -->
+			<div id="roller">
+				<div id="train"></div>
+			</div>
+			<div id="drop">
+				<div id="drop01"></div>
+			</div>
+			<div id="bg_carousel"></div>
+			<div id="wheel">
+				<div id="wheel01"></div>
+			</div>
+			<div id="lamp1"></div>
+			<div id="lamp2"></div>
+			<!-- 꾸미기 -->
+			<div id="m_b1"></div>
+			<div id="m_b2"></div>
+			<div id="m_b3"></div>
+			<div id="m_c1"></div>
+			<div id="m_c2"></div>
+			<div id="m_c3"></div>
+			<!-- 네비게이션 -->
+			<nav id="lnb">
+				<ul>
+					<li class="active"><a href="#main">main</a></li>
+					<li><a href="#kstory">kstory</a></li>
+					<li><a href="#kbrand">kbrand</a></li>
+					<li><a href="#magickinder">magickinder</a></li>
+					<li><a href="#kmovie">kmovie</a></li>
+				</ul>
+			</nav>
+			<nav id="gnb">
+				<ul>
+					<li class="active"><a href="#main">main</a></li>
+					<li><a href="#kstory">kstory</a></li>
+					<li><a href="#kbrand">kbrand</a></li>
+					<li><a href="#magickinder">magickinder</a></li>
+					<li><a href="#kmovie">kmovie</a></li>
+				</ul>
+			</nav>
+			<!-- 콘텐츠 -->
+			<div id="castle">
+				<div id="click"></div>
+			</div>
+			<div id="main_banner"></div>
+		</section>
+		<!-- 서브1 -->
+		<section id="kstory">
+				<!-- 콘텐츠 -->
+				<div id="ferriswheel"></div>
+				<!-- 꾸미기 -->
+				<div id="chat01"></div>
+				<div id="ks_b1"></div>
+				<div id="ks_b2"></div>
+				<div id="ks_b3"></div>
+				<div id="ks_c1"></div>
+				<div id="ks_c2"></div>
+				<div id="ks_c3"></div>
+				<div id="gun"></div>
+			<!-- 모달창 -->
+			<div id="ks_wrap_mo">
+				<div id="ks_banner"></div>
+				<div id="bar"></div>
+				<ul id="btn_set">
+					<li class="active"><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+				</ul>
+				<div id="ks_mo">
+					<div id="ks_carousel">
+						<ul id="list">
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+					</div>
+				</div>
+				<div id="ks_exit"></div>
+			</div>
+		</section>
+		<!-- 서브2 -->
+		<section id="kbrand">
+			<div id="kb_wrap">
+				<!-- 콘텐츠 -->
+				<div id="viking"></div>
+				<!-- 캐릭터 -->
+				<div id="wrap2">
+					<div id="kb_cha">
+						<div id="gas"></div>
+					</div>
+				</div>
+				<!-- 꾸미기 -->
+				<div id="chat02"></div>
+				<div id="kb_b1"></div>
+				<div id="kb_b2"></div>
+				<div id="kb_b3"></div>
+				<div id="kb_c1"></div>
+				<div id="kb_c2"></div>
+				<div id="popcorn"></div>
+			</div>
+			<!-- 모달창 -->
+			<div id="kb_wrap_mo">
+				<div id="kb_banner"></div>
+				<!-- 초콜릿 상자-->
+				<div id="kb_box01">
+					<div id="chocolate1"></div>
+					<div id="box01"></div>
+				</div>
+				<div id="kb_box02">
+					<div id="chocolate2"></div>
+					<div id="box02"></div>
+				</div>
+				<div id="kb_box03">
+					<div id="chocolate3"></div>
+					<div id="box03"></div>
+				</div>
+				<div id="kb_box04">
+					<div id="chocolate4"></div>
+					<div id="box04"></div>
+				</div>
+				<div id="kb_box05">
+					<div id="chocolate5"></div>
+					<div id="box05"></div>
+				</div>
+				<!-- 상자 뚜껑 -->
+				<div id="kb_box_cover01"></div>
+				<div id="kb_box_cover02"></div>
+				<div id="kb_box_cover03"></div>
+				<div id="kb_box_cover04"></div>
+				<div id="kb_box_cover05"></div>
+				<!-- 초콜렛 정보 -->
+				<div id="information1">
+					<div class="wrap_sho">
+						<div id="buynow1"></div>
+						<div id="buynow2"></div>
+						<div id="shopping1">
+							<div id="close1"></div>
+						</div>
+						<div id="shopping1_1">
+							<div id="close2"></div>
+						</div>
+					</div>
+				</div>
+				<div id="information2">
+					<div class="wrap_sho">
+						<div id="buynow3"></div>
+						<div id="buynow4"></div>
+						<div id="shopping2">
+							<div id="close3"></div>
+						</div>
+						<div id="shopping2_1">
+							<div id="close4"></div>
+						</div>
+					</div>
+				</div>
+				<div id="information3">
+					<div class="wrap_sho">
+						<div id="buynow5"></div>
+						<div id="shopping3">
+							<div id="close5"></div>
+						</div>
+					</div>
+				</div>
+				<div id="information4">
+					<div class="wrap_sho">
+						<div id="buynow6"></div>
+						<div id="buynow7"></div>
+						<div id="shopping4">
+							<div id="close6"></div>
+						</div>
+						<div id="shopping4_1">
+							<div id="close7"></div>
+						</div>
+					</div>
+				</div>
+				<div id="information5">
+					<div class="wrap_sho">
+						<div id="buynow8"></div>
+						<div id="buynow9"></div>
+						<div id="buynow10"></div>
+						<div id="shopping5">
+							<div id="close8"></div>
+						</div>
+						<div id="shopping5_1">
+							<div id="close9"></div>
+						</div>
+						<div id="shopping5_2">
+							<div id="close10"></div>
+						</div>
+					</div>
+				</div>
+				<div id="acc">
+					<div id="finger"></div>
+					<div id="finger1"></div>
+				</div>
+				<div id="kb_exit"></div>
+				<div id="btn"></div>
+			</div>
+			<div id="go"></div>
+		</section>
+		<!-- 서브3 -->
+		<section id="magickinder">
+			<!-- 콘텐츠 -->
+			<div id="carousel"><a href="#"></a></div>
+			<!-- 캐릭터 -->
+			<div id="wrap3">
+				<div id="mk_cha">
+					<div id="mk_cha_1"></div>
+				</div>				
+			</div>
+			<!-- 꾸미기 -->
+			<div class="balloon1"></div>
+			<div class="balloon1"></div>
+			<div id="chat03"></div>
+			<div id="mk_b1"></div>
+			<div id="mk_b2"></div>
+			<div id="mk_b3"></div>
+			<div id="mk_b4"></div>
+			<div id="mk_s1"></div>
+			<div id="mk_s2"></div>
+			<div id="mk_s3"></div>
+			<div id="circus"></div>
+			<!-- 모달창 -->
+			<div id="mk_wrap_mo">
+				<div id="mk_banner"></div>
+				<div id="googleplay"><a href="https://play.google.com/store/apps/details?id=com.ferrero.magickinder.tablet&hl=ko" target="_blank"></a></div>
+				<div id="appstore"><a href="https://itunes.apple.com/kr/app/magic-kinder-educational-app/id836558771?l=en&mt=8" target="_blank"></a></div>
+				<div id="point"></div>
+				<div id="mk_mo">
+					<div id="mk_box">
+						<div id="mk_img"></div>
+					</div>
+				</div>
+				<div id="mk_exit"></div>
+			</div>
+		</section>
+		<!-- 서브4 -->
+		<section id="kmovie">
+			<!-- 콘텐츠 -->
+			<div id="billboard"></div>
+			<!-- 이벤트 콘텐츠 -->
+			<div id="icecream"></div>
+			<div id="chat04"></div>
+			<div id="dart">
+				<div id="arrow"></div>
+			</div>
+			<div id="chat05"></div>
+			<div id="event01">
+				<select name="wish" id="hope">
+					<option value="하고 싶어요">하고 싶어요</option>
+					<option value="갖고 싶어요">갖고 싶어요</option>
+					<option value="가고 싶어요">가고 싶어요</option>
+					<option value="만나고 싶어요">만나고 싶어요</option>
+					<option value="되고 싶어요">되고 싶어요</option>
+					<option value="기타">기타</option>
+				</select>
+				<input type="text" id="age" placeholder="아이의 만나이를 적어주세요.^^">
+				<textarea id="wish" name="message" rows="10" cols="30" placeholder="내 아이가 어린이 날에 가장 이루고 싶어하는 소중한 소원을 자세하게 작성해주세요! (100자 제한)" maxlength="100"></textarea>
+				<div id="event_box1"></div>
+			</div>
+			<div id="event02">
+				<input type="text" name="number" id="serial">
+				<div id="event_box2"></div>
+			</div>
+			<div id="event_btn01"></div>
+			<div id="event_btn02"></div>
+			<!-- 캐릭터 -->
+			<div id="wrap4">
+				<div id="km_cha"></div>
+			</div>
+			<!-- 꾸미기 -->
+			<div id="firework1"></div>
+			<div id="firework2"></div>
+			<div id="firework3"></div>
+			<div id="firework4"></div>
+			<div id="km_s1"></div>
+			<div id="km_s2"></div>
+			<div id="km_s3"></div>
+			<div id="lamp3"></div>
+			<div id="lamp4"></div>
+		</section>
+		<div id="bg_f"></div>
+		<div id="wave1_pa">
+			<div id="wave1"></div>
+			<div id="wave3"></div>
+			<div id="wave5"></div>
+			<div id="wave7"></div>
+		</div>
+		<div id="wave2_pa">
+			<div id="wave2"></div>
+			<div id="wave4"></div>
+			<div id="wave6"></div>
+		</div>
+		<div id="black01"></div>
+		<div id="black02"></div>
+		<!-- 자동차 캐릭터 #ks_cha -->
+		<div id="ks_cha">
+			<div id="fire"></div>
+		</div>
+	</div>
+<!-- 제이쿼리 -->
+	<script>
+		$(document).ready(function(){
+			var wi=$(window).width();
+			// var wi5=
+			// alert(wi);
+			var ht=$(window).height();
+			$("#wrapper").height(ht);
+			$(window).resize(function(){
+				$(window).height(ht);
+			})
+	// ----------gnb active----------
+			var indicator=$("nav#gnb li");
+			var current=0;
+			
+			indicator.click(function(){
+				var tg=$(this);
+				var i=tg.index();
+				// 원하는 버튼을 클릭했을 때 해당하는 버튼 활성화
+				indicator.removeClass("active");
+				tg.addClass("active");
+			})
+	// ----------lnb active----------
+			var indicator1=$("nav#lnb li");
+
+			indicator1.click(function(e){
+				var wi=$("section").width();
+				var tg=$(this);
+				e.preventDefault();
+				var i=tg.index();
+				var nowLeft=i*wi;
+				indicator1.removeClass("active");
+				tg.addClass("active");
+				$("html, body").animate({"scrollLeft":nowLeft},500);
+			})
+	// ----------main----------
+		// 성
+			$("#castle").click(function(){
+				$("#main_banner").slideToggle();
+			})
+	// ----------kstory----------
+		// 관람차
+			$("#ferriswheel").click(function(){
+				$("#ks_wrap_mo").fadeIn("fast");
+				$("#black01").css({"background-color":"black","opacity":0.7,"display":"block"});
+			})
+			$("#chat01").click(function(){
+				$("#ks_wrap_mo").fadeIn("fast");
+				$("#black01").css({"background-color":"black","opacity":0.7,"display":"block"});
+			})
+			// 나가기
+			$("#ks_exit").click(function(){
+				$("#ks_wrap_mo").fadeOut("fast");
+				$("#black01").css({"display":"none"});
+			})
+		// 캐로셀
+			var slide=$("#list li");
+			var btn=$("#btn_set li");
+			var current=0;
+
+			btn.click(function(){
+				var tg=$(this);
+				var i=tg.index();
+
+				// 원하는 버튼을 클릭했을 때 해당하는 버튼 활성화
+				btn.removeClass("active");
+				tg.addClass("active");
+
+				if(current==i) return;
+
+				move(i);
+
+				function move(i){
+					var currentImg=slide.eq(current);
+					var nextImg=slide.eq(i);
+					currentImg.css("left",0).animate({"left":"-100%"},500);
+					nextImg.css("left","100%").animate({"left":0},500);
+					current=i;
+				}
+			})
+			$("#btn_set li a").click(function(event){
+			    event.preventDefault();
+			});
+	// ----------kbrand----------
+		// 바이킹
+			$("#viking").click(function(){
+				$("#kb_wrap_mo").fadeIn("fast");
+				$("#black01").css({"background-color":"black","opacity":0.7,"display":"block"});
+				$("#kb_exit").show().css("top","80%")
+			})
+			$("#chat02").click(function(){
+				$("#kb_wrap_mo").fadeIn("fast");
+				$("#black01").css({"background-color":"black","opacity":0.7,"display":"block"});
+			})
+			// 나가기
+			$("#kb_exit").click(function(){
+				$("#kb_wrap_mo").fadeOut("fast");
+				$("#black01").css({"display":"none"});
+				$("#chocolate1").animate({"bottom":"37%"});
+				$("#kb_box_cover01").animate({"bottom":"38%"});
+				$("#chocolate2").animate({"bottom":"37%"});
+				$("#kb_box_cover02").animate({"bottom":"53%"});
+				$("#chocolate3").animate({"bottom":"37%"});
+				$("#kb_box_cover03").animate({"bottom":"45%"});
+				$("#chocolate4").animate({"bottom":"37%"});
+				$("#kb_box_cover04").animate({"bottom":"51%"});
+				$("#chocolate5").animate({"bottom":"37%"});
+				$("#kb_box_cover05").animate({"bottom":"41%"});
+				$("#acc").show().css({"display":"none"});
+				$("#finger").show().css({"display":"none"})
+				// $("#kb_box_cover01").animate({"bottom":"56%"});
+			})
+			// 초콜릿 떠오르는 효과
+			$("#kb_box01").click(function(){
+				$("#chocolate1").animate({"bottom":"180px"});
+				$("#kb_box_cover01").animate({"bottom":"52%"});
+				$("#acc").show().css({"left":"50%","margin-left":"-730px","bottom":"47%"});
+				$("#finger").show();
+				$("#finger1").css("display","none");
+				$("#chocolate2").animate({"bottom":"37%"});
+				$("#kb_box_cover02").animate({"bottom":"53%"});
+				$("#chocolate3").animate({"bottom":"37%"});
+				$("#kb_box_cover03").animate({"bottom":"45%"});
+				$("#chocolate4").animate({"bottom":"37%"});
+				$("#kb_box_cover04").animate({"bottom":"51%"});
+				$("#chocolate5").animate({"bottom":"37%"});
+				$("#kb_box_cover05").animate({"bottom":"41%"});
+			})
+			$("#kb_box02").click(function(){
+				$("#chocolate2").animate({"bottom":"150px"});
+				$("#kb_box_cover02").animate({"bottom":"65%"});
+				$("#acc").show().css({"left":"30%","margin-left":"-95px","bottom":"54%"});
+				$("#finger").show();
+				$("#finger1").css("display","none");
+				$("#chocolate1").animate({"bottom":"37%"});
+				$("#kb_box_cover01").animate({"bottom":"38%"});
+				$("#chocolate3").animate({"bottom":"37%"});
+				$("#kb_box_cover03").animate({"bottom":"45%"});
+				$("#chocolate4").animate({"bottom":"37%"});
+				$("#kb_box_cover04").animate({"bottom":"51%"});
+				$("#chocolate5").animate({"bottom":"37%"});
+				$("#kb_box_cover05").animate({"bottom":"41%"});
+			})
+			$("#kb_box03").click(function(){
+				$("#chocolate3").animate({"bottom":"180px"});
+				$("#kb_box_cover03").animate({"bottom":"59%"});
+				$("#acc").show().css({"left":"50%","margin-left":"40px","bottom":"49%"});
+				$("#finger").css("display","none");
+				$("#finger1").show().css("margin-left","-85px");
+				$("#chocolate1").animate({"bottom":"37%"});
+				$("#kb_box_cover01").animate({"bottom":"38%"});
+				$("#chocolate2").animate({"bottom":"37%"});
+				$("#kb_box_cover02").animate({"bottom":"53%"});
+				$("#chocolate4").animate({"bottom":"37%"});
+				$("#kb_box_cover04").animate({"bottom":"51%"});
+				$("#chocolate5").animate({"bottom":"37%"});
+				$("#kb_box_cover05").animate({"bottom":"41%"});
+			})
+			$("#kb_box04").click(function(){
+				$("#chocolate4").animate({"bottom":"160px"});
+				$("#kb_box_cover04").animate({"bottom":"63%"});
+				$("#acc").show().css({"left":"50%","margin-left":"50px","bottom":"54%"});
+				$("#finger").show();
+				$("#finger1").css("display","none");
+				$("#chocolate1").animate({"bottom":"37%"});
+				$("#kb_box_cover01").animate({"bottom":"38%"});
+				$("#chocolate2").animate({"bottom":"37%"});
+				$("#kb_box_cover02").animate({"bottom":"53%"});
+				$("#chocolate3").animate({"bottom":"37%"});
+				$("#kb_box_cover03").animate({"bottom":"45%"});
+				$("#chocolate5").animate({"bottom":"37%"});
+				$("#kb_box_cover05").animate({"bottom":"41%"});
+			})
+			$("#kb_box05").click(function(){
+				$("#chocolate5").animate({"bottom":"180px"});
+				$("#kb_box_cover05").animate({"bottom":"54%"});
+				$("#acc").show().css({"left":"50%","margin-left":"600px","bottom":"44%"});
+				$("#finger").css("display","none");
+				$("#finger1").show().css("margin-left","-130px");
+				$("#chocolate1").animate({"bottom":"37%"});
+				$("#kb_box_cover01").animate({"bottom":"38%"});
+				$("#chocolate2").animate({"bottom":"37%"});
+				$("#kb_box_cover02").animate({"bottom":"53%"});
+				$("#chocolate3").animate({"bottom":"37%"});
+				$("#kb_box_cover03").animate({"bottom":"45%"});
+				$("#chocolate4").animate({"bottom":"37%"});
+				$("#kb_box_cover04").animate({"bottom":"51%"});
+			})
+			// 상품정보
+			$("#chocolate1").click(function(){
+				$("#information1").fadeIn("slow");
+				$("div#btn").show().css({"top":"26%"});
+				$("#black02").css({"background-color":"black","opacity":0.6,"display":"block"});
+				$(".wrap_sho").show();
+			})
+			$("#chocolate2").click(function(){
+				$("#information2").fadeIn("slow");
+				$("div#btn").show();
+				$("#black02").css({"background-color":"black","opacity":0.6,"display":"block"});
+			})
+			$("#chocolate3").click(function(){
+				$("#information3").fadeIn("slow");
+				$("div#btn").show();
+				$("#black02").css({"background-color":"black","opacity":0.6,"display":"block"});
+			})
+			$("#chocolate4").click(function(){
+				$("#information4").fadeIn("slow");
+				$("div#btn").show();
+				$("#black02").css({"background-color":"black","opacity":0.6,"display":"block"});
+				$("div#go").show();
+			})
+			$("#chocolate5").click(function(){
+				$("#information5").fadeIn("slow");
+				$("div#btn").show();
+				$("#black02").css({"background-color":"black","opacity":0.6,"display":"block"});
+			})
+			$("div#btn").click(function(){
+				$("div#btn").css({"display":"none"});
+				$("#information1").css({"display":"none"});
+				$("#information2").css({"display":"none"});
+				$("#information3").css({"display":"none"});
+				$("#information4").css({"display":"none"});
+				$("#information5").css({"display":"none"});
+				$("#black02").css({"display":"none"});
+				$("#shopping1").css({"top":"90%"});
+				$("#shopping1_1").css({"top":"90%"});
+				$("#shopping2").css({"top":"90%"});
+				$("#shopping2_1").css({"top":"90%"});
+				$("#shopping3").css({"top":"90%"});
+				$("#shopping4").css({"top":"90%"});
+				$("#shopping4_1").css({"top":"90%"});
+				$("#shopping5").css({"top":"90%"});
+				$("#shopping5_1").css({"top":"90%"});
+				$("#shopping5_2").css({"top":"90%"});
+				$("#go").css({"display":"none"});
+			})
+			// BuyNow 버튼
+			$("#buynow1").click(function(){
+				$("#shopping1").css({"top":"3%"});
+				$("#shopping1_1").css({"top":"100%"});
+			})
+			$("#buynow2").click(function(){
+				$("#shopping1_1").css({"top":"3%"});
+				$("#shopping1").css({"top":"100%"});
+			})
+			$("#buynow3").click(function(){
+				$("#shopping2").css({"top":"3%"});
+				$("#shopping2_1").css({"top":"100%"});
+			})
+			$("#buynow4").click(function(){
+				$("#shopping2_1").css({"top":"3%"});
+				$("#shopping2").css({"top":"100%"});
+			})
+			$("#buynow5").click(function(){
+				$("#shopping3").css({"top":"3%"});
+			})
+			$("#buynow6").click(function(){
+				$("#shopping4").css({"top":"3%"});
+				$("#shopping4_1").css({"top":"100%"});
+			})
+			$("#buynow7").click(function(){
+				$("#shopping4_1").css({"top":"3%"});
+				$("#shopping4").css({"top":"100%"});
+			})
+			$("#buynow8").click(function(){
+				$("#shopping5").css({"top":"3%"});
+				$("#shopping5_1").css({"top":"100%"});
+				$("#shopping5_2").css({"top":"100%"});
+			})
+			$("#buynow9").click(function(){
+				$("#shopping5_1").css({"top":"3%"});
+				$("#shopping5").css({"top":"100%"});
+				$("#shopping5_2").css({"top":"100%"});
+			})
+			$("#buynow10").click(function(){
+				$("#shopping5_2").css({"top":"3%"});
+				$("#shopping5").css({"top":"100%"});
+				$("#shopping5_1").css({"top":"100%"});
+			})
+			// 닫기
+			$("div#close1").click(function(){
+				$("#shopping1").css({"top":"90%"});
+			})
+			$("div#close2").click(function(){
+				$("#shopping1_1").css({"top":"90%"});
+			})
+			$("div#close3").click(function(){
+				$("#shopping2").css({"top":"90%"});
+			})
+			$("div#close4").click(function(){
+				$("#shopping2_1").css({"top":"90%"});
+			})
+			$("div#close5").click(function(){
+				$("#shopping3").css({"top":"90%"});
+			})
+			$("div#close6").click(function(){
+				$("#shopping4").css({"top":"90%"});
+			})
+			$("div#close7").click(function(){
+				$("#shopping4_1").css({"top":"90%"});
+			})
+			$("div#close8").click(function(){
+				$("#shopping5").css({"top":"90%"});
+			})
+			$("div#close9").click(function(){
+				$("#shopping5_1").css({"top":"90%"});
+			})
+			$("div#close10").click(function(){
+				$("#shopping5_2").css({"top":"90%"});
+			})
+			// 장난감 클릭
+			// $("div#go").
+		// ----------magickinder----------
+			// 회전목마
+			$("div#carousel").click(function(){
+				$("div#mk_wrap_mo").fadeIn("fast");
+				$("#black01").css({"background-color":"black","opacity":0.7,"display":"block"});
+				$("div#mk_exit").show().css("top","80%");
+			})
+			$("div#chat03").click(function(){
+				$("div#mk_wrap_mo").fadeIn("fast");
+				$("#black01").css({"background-color":"black","opacity":0.7,"display":"block"});
+				$("div#mk_exit").show().css("top","80%");
+			})
+			// 나가기
+			$("#mk_exit").click(function(){
+				$("#mk_wrap_mo").fadeOut("fast");
+				$("#black01").css({"display":"none"});
+				$("#mk_exit").css({"display":"none"});
+			})
+		// ----------kmovie----------
+			// 이벤트창_아이스크림
+			$("div#icecream").click(function(){
+				$("div#event01").show();
+				$("div#event_btn01").show().css({"left":"50%","margin-left":"-270px","top":"7%"})
+			})
+			$("div#chat04").click(function(){
+				$("div#event01").show();
+				$("div#event_btn01").show().css({"left":"50%","margin-left":"-270px","top":"7%"})
+			})
+			$("div#dart").click(function(){
+				$("div#event02").show();
+				$("div#event_btn02").show().css({"right":"50%","margin-right":"-790px","top":"7%"});
+				$("input#serial").show();
+			})
+			$("div#chat05").click(function(){
+				$("div#event02").show();
+				$("div#event_btn02").show().css({"right":"50%","margin-right":"-790px","top":"7%"});
+				$("input#serial").show();
+			})
+			// 이벤트창 알러트
+			$("div#event_box1").click(function(){
+				alert("킨더가 소원을 접수했습니다^^ 당첨자 발표날을 기대해주세요~!");
+			})
+			$("div#event_box2").click(function(){
+				alert("시리얼번호가 등록되었습니다^^ 당첨자 발표날을 기대해주세요~!");
+			})
+			// 나가기
+			$("div#event_btn01").click(function(){
+				$("div#event01").hide();
+				$("div#event_btn01").hide();
+			})
+			$("div#event_btn02").click(function(){
+				$("div#event02").hide();
+				$("div#event_btn02").hide();
+			})
+			/*
+			마우스휠을 이용한 가로 스크롤 구현하기
+			--마우스휠 플러그인의 사용방법--
+			if(delta>0){
+				마우스휠이 아래쪽으로 움직일 때 실행할 구문
+			}else if(delta<0){
+				마우스휠이 윗쪽으로 움직일 때 실행할 구문
+			}
+			*/
+			
+			
+		})
+	</script>
+</body>
+</html>

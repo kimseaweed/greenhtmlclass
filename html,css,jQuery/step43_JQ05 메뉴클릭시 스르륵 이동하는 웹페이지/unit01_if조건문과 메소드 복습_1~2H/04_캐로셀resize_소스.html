@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>03_캐로셀의 구현</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- font awesome -->
+	<script src="https://kit.fontawesome.com/4c3e89fe3d.js" crossorigin="anonymous"></script>
+	<style>
+		*{margin: 0;
+		padding: 0;}
+		ol li, ul li{
+			list-style: none;
+		}
+		#carousel{
+			width: 80%;
+			height: 400px;
+			border: 1px solid red;
+			position: absolute;
+			left:10%;
+			/*overflow: hidden;*/
+		}
+		#carousel ol.gallery{
+			width: 100%;
+			height: 100%;
+			border:1px solid blue;
+			position: absolute;
+		}
+		#carousel ol.gallery li{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left:100%;
+		}
+		#carousel ol.gallery li:nth-child(1){
+			background: url(img/0.png) no-repeat center;
+			background-size: cover;
+			left:0;
+		}
+		#carousel ol.gallery li:nth-child(2){
+			background: url(img/1.png) no-repeat center;
+			background-size: cover;
+		}
+		#carousel ol.gallery li:nth-child(3){
+			background: url(img/2.png) no-repeat center;
+			background-size: cover;
+		}
+		/*버튼*/
+		#carousel ol.btn_set{
+			/*border:1px solid red;*/
+			position: absolute;
+			bottom: 5px;
+			left:50%;
+			margin-left: -45px;
+		}
+		#carousel ol.btn_set li{
+			width: 20px;
+			height: 20px;
+			background-color: white;
+			float: left;
+			margin: 5px;
+			text-indent: -9999px;
+			border-radius: 50%;
+			cursor: pointer;
+		}
+		#carousel ol.btn_set li.active{
+			background-color: #585755 !important;
+		}
+		#carousel i{
+			position: relative;
+			z-index: 99;
+			color:white;
+			font-size: 3em;
+			position: absolute;
+			top:45%;
+			cursor: pointer;
+		}
+		#carousel .fa-angle-left{
+			left:15px;
+		}
+		#carousel .fa-angle-right{
+			right:15px;
+		}
+	</style>
+</head>
+<body>
+	<!-- div#carousel>(ol.gallery>li*3)+(ol.btn_set>li*3) -->
+	<div id="carousel">
+		<ol class="gallery">
+			<li></li>
+			<li></li>
+			<li></li>
+		</ol>
+		<ol class="btn_set">
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+		</ol>
+		<i class="fa-solid fa-angle-left"></i>
+		<i class="fa-solid fa-angle-right"></i>
+	</div>
+	<script>
+		$(function(){
+			var img = $(".gallery li");
+			var btn = $(".btn_set li");
+			var current = 0;
+			var carousel_prevBtn = $(".fa-angle-left");
+			var carousel_nextBtn = $(".fa-angle-right");
+			var i = 0;
+
+			//좌측버튼 클릭시 동작구문
+			carousel_prevBtn.click(function(){
+				var currentImg = img.eq(current);
+				var nextImg = img.eq(current-=1);
+				currentImg.stop().css("left",0).animate({"left":"100%"});
+				nextImg.stop().css("left","-100%").animate({"left":0});
+
+				if(current==-1){
+					current = 2;
+				}
+
+				//좌측버튼 클릭시 하단의 인디케이터 버튼 활성화 바뀌기 구현
+				i-=1;
+				btn.removeClass("active");
+				btn.eq(i).addClass("active");
+				if(i==-1){
+					i=2;
+				}
+			})
+			//우측버튼 클릭시 동작구문
+			carousel_nextBtn.click(function(){
+				var currentImg = img.eq(current);
+				var nextImg = img.eq(current+=1);
+				currentImg.stop().css("left",0).animate({"left":"-100%"});
+				nextImg.stop().css("left","100%").animate({"left":0});
+
+				if(current==3){
+					current = -1;
+
+					var currentImg = img.eq(current);
+					var nextImg = img.eq(current+=1);
+					currentImg.stop().css("left",0).animate({"left":"-100%"});
+					nextImg.stop().css("left","100%").animate({"left":0});
+				}
+
+				//우측버튼 클릭시 하단의 인디케이터 버튼 활성화 바뀌기 구현
+				i+=1;
+				btn.removeClass("active");
+				btn.eq(i).addClass("active");
+				if(i==3){
+					i=0;
+					btn.eq(i).addClass("active");
+				}
+			})
+
+
+			//하단의 인디케이터 버튼 클릭시 동작구문
+			btn.click(function(){
+				var tg = $(this);
+				var num = tg.index();
+				// alert(num);
+				if(current==num){
+					return 0;//동작시키지 않겠다.
+				}
+
+				move(num);
+
+				function move(num){
+					var currentImg = img.eq(current);
+					var nextImg = img.eq(num);
+
+					currentImg.stop().css("left",0).animate({"left":"-100%"});
+					nextImg.stop().css("left","100%").animate({"left":0});
+					current = num;
+				}
+
+				//인디케이터 버튼 클릭시 활성화 스타일
+				btn.removeClass("active");
+				tg.addClass("active");
+			})
+		})
+	</script>
+</body>
+</html>
