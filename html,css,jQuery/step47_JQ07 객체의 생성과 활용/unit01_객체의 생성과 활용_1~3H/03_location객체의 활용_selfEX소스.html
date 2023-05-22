@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>preventDefault()의 활용</title>
+	<style>
+	*{box-sizing: border-box; padding:0; margin:0;}
+	#nav{width: 800px; margin:100px auto 0 auto;}
+	#nav ul li{float: left; position: relative; width: 200px; list-style: none;}	 
+	#nav ul li a{display: block; width: 200px; height: 30px; line-height: 30px;  background-color: gray; text-align: center; color: white}
+	#nav ul li.on a{background-color: skyblue; color: #0983C0; font-weight: bold; text-decoration: none}
+	p{font-size: 3em}
+	</style>
+</head>
+<body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!--핵심포인트 정리
+	-->
+	<div id="nav">
+		<ul>
+			<li class="on"><a href="#">menu1</a></li>
+			<li><a href="#">menu2</a></li>
+			<li><a href="#">menu3</a></li>
+			<li><a href="#">menu4</a></li>
+		</ul>
+	</div>
+	<br><br><br><br>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/prefixfree.min.js"></script>
+	<script>
+	$(function(){
+		$('a').click(function(){
+			$("a").removeClass("on");
+			$(this).addClass('on');
+			location.href="https://www.youtube.com/";
+		});
+		$('a').eq(0).click(function(){
+			location.href="https://programmers.co.kr/";
+		});
+		$('a').eq(0).click(function(){
+			location.href="https://chat.openai.com/";
+		});
+		$('a').eq(0).click(function(){
+			location.href="https://www.youtube.com/";
+		});
+		$('a').eq(0).click(function(){
+			location.href="https://www.youtube.com/";
+		});
+	})	
+	</script>
+</body>
+</html>

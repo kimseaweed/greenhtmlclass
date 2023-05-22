@@ -1,0 +1,19 @@
+코딩복습일지_날짜_학생명.hwp :핵심내용 정리 & 코드 붙여넣기
+: 금일 학습한 관련된 내용을 꼭 머리속에 정리하면서 부호화하고 그것을 코딩복습과제일지에 본인만의 방법으로 정리하여 학생방/과제방/오늘날짜 폴더안에 제출해주세요.
+
+=>
+1. W3SCHOOLS.COM사이트의 카테고리 :
+https://www.w3schools.com/jquery/jquery_traversing.asp
+https://www.w3schools.com/jquery/jquery_traversing_ancestors.asp
+https://www.w3schools.com/jquery/jquery_traversing_descendants.asp
+https://www.w3schools.com/jquery/jquery_traversing_filtering.asp
+복습 (파일명:학습항목_본인이름.html)
+-->수업시간에 못했던 내용도 공부해오세요~!
+
+2. 객체의 활용 참고 이미지를 보고 각각의 영화이름버튼을 클릭시 영화정보와 관람객평점, 모든영화의 평점 총합계, 평균을 구하는 구현을 코딩으로 완성해 보세요.  (파일명:영화정보_본인이름.html)
+
+==주의할 점==
+1)파일명:날짜와 이름을 꼭 확인후 변경해주세요!
+2)한글파일 내부의 제출날짜와 학생명, 핵심 키워드를 꼭 정확하게 기입해 주세요!
+3)작성한 파일을 [파일메뉴>보내기>그림으로 저장하기] 하여 본인 메일이나 클라우드에 업로드후 집에서 다시한번 복습하고 머릿속에 부호화하여 기억으로 저장되었는지 복호화하는 과정을 통해 내것으로 꼭 만들어보세요. 
+

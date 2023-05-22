@@ -2561,6 +2561,14 @@
 			z-index: 15;
 			display: none;
 		}
+		.txt, .car_txt{
+			position: fixed;
+			font-size: 2em;
+			z-index: 99
+		}
+		.car_txt{
+			top:50px;
+		}
 	</style>
 </head>
 <body>
@@ -2869,6 +2877,8 @@
 		<div id="ks_cha">
 			<div id="fire"></div>
 		</div>
+		<div class="txt">스크롤 좌표</div>
+		<div class="car_txt">자동차의 x좌표</div>
 	</div>
 <!-- 제이쿼리 -->
 	<script>
@@ -3245,7 +3255,37 @@
 				마우스휠이 윗쪽으로 움직일 때 실행할 구문
 			}
 			*/
-			
+			var wrapper = $("#wrapper");
+			var txt = $(".txt");
+			var car_txt = $(".car_txt");
+			var car = $("#ks_cha");
+
+			wrapper.on("mousewheel",function(event, delta){
+				if(delta>0){
+					//마우스휠을 올렸을 때 실행될 구문
+					var left = $(window).scrollLeft();
+					txt.text(left);
+					var leftMore = left-100;
+					$("html,body").stop().animate({"scrollLeft":leftMore},100,"linear");
+					car_txt.text(car.offset().left);
+					if(left<=1000){
+						car.css({"position":"absolute"});
+					}
+					car.css({"transform":"scaleX(-1)"});
+				}else if(delta<0){
+					//마우스휠을 내렸을 때 실행될 구문
+					var left = $(window).scrollLeft();
+					txt.text(left);
+					var leftMore = left+100;
+					$("html,body").stop().animate({"scrollLeft":leftMore},100,"linear");
+					car_txt.text(car.offset().left);
+					if(left>1000){
+						car.css({"position":"fixed"});
+					}
+					car.css({"transform":"scaleX(1)"});
+				}
+
+			})
 			
 		})
 	</script>

@@ -36,10 +36,16 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="js/prefixfree.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-	<script type="text/javascript">
-		
-	
-	    
+	<script type="text/javascript"></script>
+	<script>
+$(document).ready(function(){
+    $('button').click(function(){
+        var eq = $(this).index();
+        var offset = $('img').eq(eq).offset().top;
+        $('html, body').animate({scrollTop: offset});
+        $('p span').text(offset);
+    });
+});
 	</script>
 </body>
 </html>

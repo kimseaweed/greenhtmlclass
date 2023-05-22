@@ -27,6 +27,19 @@
 	<script>
 		$(function(){
 			var box =$(".box");
+			var txt = $(".box p");
+
+			$("html,body").on("mousewheel",function(event, delta){
+				if(delta > 0){
+					//마우스 휠을 올렸을 때 실행될 구문
+					box.css("background-color","red");
+					txt.text("마우스휠이 올라갔습니다.");
+				}else if(delta < 0){
+					//마우스 휠을 내렸을 때 실행될 구문
+					box.css("background-color","blue");
+					txt.text("마우스휠이 내려갔습니다.");
+				}
+			})
 		})
 	</script>
 </body>
