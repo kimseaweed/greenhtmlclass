@@ -4,28 +4,101 @@
 	<meta charset="UTF-8">
 	<title>timer 생성하기</title>
 	<style>
-	p{font:bold 100px arial; text-align: center; margin:50px auto;}	 
+		div{
+			border: 3px solid red;
+			width: 50%;
+			margin: 3% auto;
+		}
+		p{
+			font:bold 100px arial; 
+			text-align: center; 
+			margin:0 auto;}	 
+		h1, h2, h3, h4{
+			text-align: center;
+		}
 	</style>
 </head>
 <body>
-   	<p>
-   		<span>00</span>:
-   		<span>00</span>:
-   		<span>00</span>
-   	</p>
-	<script src="js/jquery-1.12.0.min.js"></script>
-	<!--핵심포인트 정리
-	시간을 출력하려면 시간과 날짜에 대한 정보를 가지고 있는 Date()객체를 활용한다.
-	Date()객체를 활용할 시에는 원본을 그대로 사용하지 않고 복사해서 활용가능하다.
-	복사하는 방법은 new Date();
+	<div>
+		<h1>학원 수료까지 <span></span>일 남았어...</h1>
+	</div>
 
-	0~5시는 새벽, 6~9시는 아침, 10~17시는 낮, 18~21시는 저녁, 22~24시는 밤
-	-->
-	
-	
-	<script src="js/prefixfree.min.js"></script>
-	<script>
+	<div>
+		<h1>학원 끝날때까지</h1>
+			<p>
+				<span>00</span>시간
+				<span>00</span>분
+				<span>00</span>초
+			</p>
+		<h2>남았어...</h2>
+	</div>
+
+	<div>
 		
+		<h3>쉬는시간은</h3>
+		<p>
+			<span>00</span>분
+			<span>00</span>초
+		</p>
+		<h4>남았어...</h4>
+	</div>
+	<div class="gohome">
+		<h1 > 집에갈시간 😁</h1>
+	</div>
+	<script src="js/jquery-1.12.0.min.js"></script>
+	<script src="js/prefixfree.min.js"></script>
+	
+	<script>
+		$(document).ready(function(){
+			var clock = setInterval(timer,1000);
+
+			function timer(){
+				var now = new Date;
+				var date = now.getDay();
+			
+				// var hour = now.getHours();
+				// var minutes = now.getMinutes();
+				// var seconds = now.getSeconds();
+				//테스트
+				var hour = 13
+				var minutes = 10
+				var seconds = 00
+
+				var home_h = 17-hour;
+				var home_m = 59-minutes;
+				var home_s = 60-seconds;
+				
+				//날짜
+				$('span').eq(0).text("...");
+
+				if((9==hour&&minutes<=40||9<hour)&&hour<18){
+					$(".gohome").hide();
+
+					$('span').eq(1).text(home_h);
+					$('span').eq(2).text(home_m);
+					$('span').eq(3).text(home_s);
+
+					if(17==hour){
+						$("div").eq(2).hide();
+					}else{
+						var lest_m=59-minutes;
+						var lest_s=60-seconds;	
+						if((hour==13&&minutes<=20)||hour>13){
+							lest_m=lest_m+20;
+						}
+						$('span').eq(4).text(lest_m);
+						$('span').eq(5).text(lest_s);
+					}
+				}else{
+					$("div:nth-child(n+2)").hide();
+					$(".gohome").show();
+				}
+				
+
+
+				
+			}
+		});
 	</script>
 </body>
 </html>
