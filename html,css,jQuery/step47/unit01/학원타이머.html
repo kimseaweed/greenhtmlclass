@@ -653,8 +653,8 @@ $('#container').flipclock();
 
                         }else{ //오전수업 else 오후수업
                         $("#usage li").eq(4).hide(); //점심시간 알림 삭제 
-                        if(!(00<=m&&10>m)){//수업
-                                if(h>16){ //오후수업 else 자습
+                        if(!(00<=m&&10>m)){//수업 else 쉬는시간
+                                if(h<16){ //오후수업 else 자습
                                     nowtime="수업";
                                 }else{
                                     nowtime="자습";
@@ -667,7 +667,7 @@ $('#container').flipclock();
                                     $("#usage li").eq(6).hide();
                                 }
                             }else{//쉬는시간
-                                if(h>16){ //오후수업 else 자습
+                                if(h<16){ //오후수업 else 자습
                                     nexttime="다음 수업";
                                 }else{
                                     nexttime="다음 자습";
