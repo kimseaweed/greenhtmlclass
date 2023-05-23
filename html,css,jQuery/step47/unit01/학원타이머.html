@@ -284,6 +284,7 @@ body.play ul section.active .down .shadow {
         opacity: 0;
     }
 }
+        /* myCss */
         button{
             border: none;
             background-color: transparent;
@@ -295,10 +296,15 @@ body.play ul section.active .down .shadow {
             color: gray;
         }
         #page{
-            margin-top: 3%;
+            margin-top: 2.5%;
         }
-        mark{
-            background-color: lemonchiffon;
+        #usage{
+            padding-bottom: 1.5rem;
+        }
+        #usage, #usage li {
+            background-color: ghostwhite;
+            border: none;
+            border-radius: 10px;
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -348,6 +354,140 @@ body.play ul section.active .down .shadow {
             </ul>
         </div>
     </div>
+    <script>
+        //mycode
+        $(document).ready(function() {
+
+            $('.timeTable').hide();
+            $('button').click(function(){
+                $(".timeTable").toggle();
+            })
+
+            //시간반복 시작
+            setInterval(function time(){
+            
+            var now = new Date;
+            var now_sec = new Date();
+            var h = now.getHours();
+            var m = now.getMinutes();
+            var s = now.getSeconds();
+            // var h = 18; //테스트용
+            // var m = 10; //테스트용
+            
+            //수료일
+            var end_sec = new Date("2023-8-24");
+            $('.d-day').text(Math.floor((end_sec-now_sec) / (1000*60*60*24))+1);
+
+            //집갈시간
+            var home_h = 17 - h;
+            var home_m = 59 - m;
+            var home_s = 60 - s;
+            
+            $(".hometime-h").text(home_h);
+            $(".hometime-m").text(home_m);
+            $(".hometime-s").text(home_s);
+            //집갈시간 끝      
+            
+            var nowtime; //이번시간
+            var nexttime; //다음시간
+            var nexttime_h; //다음시간이 시작하는시간
+            var nexttime_m; //다음시간이 시작하는분
+            if((9<h||(9==h&&40<=m))&&h<18){ //학원 else 집
+                $("#usage li").eq(3).children("span").eq(0).hide();
+                
+                if((h==13&&20<=m)||(h==14&&m<10)){ //점심 else 점심시간외
+                    $("#usage li").eq(4).hide();
+                    nowtime="점심";
+                    nexttime="다음 수업";
+                    nexttime_h =14;
+                    nexttime_m =10;
+                    } else{
+                        if(h<14){//오전수업 else 오후수업
+
+                            var lunch_h=13-h;
+                            var lunch_m=19-m;
+                            var lunch_s=60-s;
+                            if(lunch_m<0){
+                                lunch_h-=1;
+                                lunch_m+=60;
+                            }
+                            $(".lunch-h").text(lunch_h);
+                            $(".lunch-m").text(lunch_m);
+                            $(".lunch-s").text(lunch_s);
+
+                            if(!(20<=m&&30>m)){//수업 else 쉬는시간
+                                nowtime="수업";
+                                nexttime="이번 쉬는";
+                                nexttime_m =20;
+                                if((h==12&&m<=30)||(h==13&&m>20)){
+                                    //점심직전시간
+                                    $("#usage li").eq(5).children("span").eq(1).hide();
+                                }
+                            }else{//쉬는시간
+                                nowtime="쉬는";
+                                nexttime="다음 수업";
+                                nexttime_m =30;
+                            }
+
+                        }else{ //오전수업 else 오후수업
+                        $("#usage li").eq(4).hide(); //점심시간 알림 삭제 
+                        if(!(00<=m&&10>m)){//수업 else 쉬는시간
+                                if(h<16){ //오후수업 else 자습
+                                    nowtime="수업";
+                                }else{
+                                    nowtime="자습";
+                                }
+                                nexttime="이번 쉬는";
+                                nexttime_m =00;
+                                if((h==17&&m>=10)){
+                                    //귀가 직전시간
+                                    $("#usage li").eq(5).children("span").eq(1).hide();
+                                    $("#usage li").eq(6).hide();
+                                }
+                            }else{//쉬는시간
+                                if(h<16){ //오후수업 else 자습
+                                    nexttime="다음 수업";
+                                }else{
+                                    nexttime="다음 자습";
+                                }
+                                nowtime="쉬는";
+                                nexttime_m = 10;
+                            }
+                        }
+
+                        if(m<nexttime_m){
+                            nexttime_h=h
+                        }else{
+                            nexttime_h=h+1
+                        }
+                        
+                    }
+                //무슨시간 $("#usage li").eq(5)
+                $(".nowtime").text(nowtime);
+                $(".nexttime").text(nexttime);
+                $(".nexttime-h").text(nexttime_h);
+                $(".nexttime-m").text(nexttime_m);
+
+                //남은시간 $("#usage li").eq(6)
+                var nowtime_m = nexttime_m - m;
+                if (nowtime_m<0){ nowtime_m = 60 + nowtime_m} 
+                var nowtime_s = 60 - s;
+                if (nowtime_s!=0){nowtime_m-=1;}
+                $(".nowtime-m").text(nowtime_m);
+                $(".nowtime-s").text(nowtime_s);
+                //남은시간 끝
+                    
+            }else{
+                //집
+                $("#usage li").eq(3).children("span").eq(1).hide(); //집,학원
+                $("#usage li").eq(4).hide(); //점심알림
+                $("#usage li").eq(5).hide(); //무슨시간 알림
+                $("#usage li").eq(6).hide(); //남은시간 알림
+            }
+
+        },1000);//시간반복 끝
+        })//mycode
+    </script>
     <script>
 /*
  * flipclock
@@ -576,140 +716,6 @@ body.play ul section.active .down .shadow {
 $('#container').flipclock();
 
     </script>
-    <script>
-        //mycode
-        $(document).ready(function() {
 
-            $('.timeTable').hide();
-            $('button').click(function(){
-                $(".timeTable").toggle();
-            })
-
-            //시간반복 시작
-            setInterval(function time(){
-            
-            var now = new Date;
-            var now_sec = new Date();
-            var h = now.getHours();
-            var m = now.getMinutes();
-            var s = now.getSeconds();
-            // var h = 18; //테스트용
-            // var m = 10; //테스트용
-            
-            //수료일
-            var end_sec = new Date("2023-8-24");
-            $('.d-day').text(Math.floor((end_sec-now_sec) / (1000*60*60*24))+1);
-
-            //집갈시간
-            var home_h = 17 - h;
-            var home_m = 59 - m;
-            var home_s = 60 - s;
-            
-            $(".hometime-h").text(home_h);
-            $(".hometime-m").text(home_m);
-            $(".hometime-s").text(home_s);
-            //집갈시간 끝      
-            
-            var nowtime; //이번시간
-            var nexttime; //다음시간
-            var nexttime_h; //다음시간이 시작하는시간
-            var nexttime_m; //다음시간이 시작하는분
-            if((9<h||(9==h&&40<=m))&&h<18){ //학원 else 집
-                $("#usage li").eq(3).children("span").eq(0).hide();
-                
-                if((h==13&&20<=m)||(h==14&&m<10)){ //점심 else 점심시간외
-                    $("#usage li").eq(4).hide();
-                    nowtime="점심";
-                    nexttime="다음 수업";
-                    nexttime_h =14;
-                    nexttime_m =10;
-                    } else{
-                        if(h<14){//오전수업 else 오후수업
-
-                            var lunch_h=13-h;
-                            var lunch_m=19-m;
-                            var lunch_s=60-s;
-                            if(lunch_m<0){
-                                lunch_h-=1;
-                                lunch_m+=60;
-                            }
-                            $(".lunch-h").text(lunch_h);
-                            $(".lunch-m").text(lunch_m);
-                            $(".lunch-s").text(lunch_s);
-
-                            if(!(20<=m&&30>m)){//수업 else 쉬는시간
-                                nowtime="수업";
-                                nexttime="이번 쉬는";
-                                nexttime_m =20;
-                                if((h==12&&m<=30)||(h==13&&m>20)){
-                                    //점심직전시간
-                                    $("#usage li").eq(5).children("span").eq(1).hide();
-                                }
-                            }else{//쉬는시간
-                                nowtime="쉬는";
-                                nexttime="다음 수업";
-                                nexttime_m =30;
-                            }
-
-                        }else{ //오전수업 else 오후수업
-                        $("#usage li").eq(4).hide(); //점심시간 알림 삭제 
-                        if(!(00<=m&&10>m)){//수업 else 쉬는시간
-                                if(h<16){ //오후수업 else 자습
-                                    nowtime="수업";
-                                }else{
-                                    nowtime="자습";
-                                }
-                                nexttime="이번 쉬는";
-                                nexttime_m =00;
-                                if((h==17&&m>=10)){
-                                    //귀가 직전시간
-                                    $("#usage li").eq(5).children("span").eq(1).hide();
-                                    $("#usage li").eq(6).hide();
-                                }
-                            }else{//쉬는시간
-                                if(h<16){ //오후수업 else 자습
-                                    nexttime="다음 수업";
-                                }else{
-                                    nexttime="다음 자습";
-                                }
-                                nowtime="쉬는";
-                                nexttime_m = 10;
-                            }
-                        }
-
-                        if(m<nexttime_m){
-                            nexttime_h=h
-                        }else{
-                            nexttime_h=h+1
-                        }
-                        
-                    }
-                //무슨시간 $("#usage li").eq(5)
-                $(".nowtime").text(nowtime);
-                $(".nexttime").text(nexttime);
-                $(".nexttime-h").text(nexttime_h);
-                $(".nexttime-m").text(nexttime_m);
-
-                //남은시간 $("#usage li").eq(6)
-                var nowtime_m = nexttime_m - m;
-                if (nowtime_m<0){ nowtime_m = 60 + nowtime_m} 
-                var nowtime_s = 60 - s;
-                if (nowtime_s!=0){nowtime_m-=1;}
-                $(".nowtime-m").text(nowtime_m);
-                $(".nowtime-s").text(nowtime_s);
-                //남은시간 끝
-                    
-            }else{
-                //집
-                $("#usage li").eq(3).children("span").eq(1).hide(); //집,학원
-                $("#usage li").eq(4).hide(); //점심알림
-                $("#usage li").eq(5).hide(); //무슨시간 알림
-                $("#usage li").eq(6).hide(); //남은시간 알림
-            }
-
-        },1000);//시간반복 끝
-
-        })//mycode
-    </script>
 </body>
 </html>
