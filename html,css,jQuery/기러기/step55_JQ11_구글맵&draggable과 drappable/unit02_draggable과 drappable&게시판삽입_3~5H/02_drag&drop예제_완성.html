@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  	<link rel="stylesheet" href="css/mystyle.css">
+  	<script src="js/myscript.js"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<!-- background -->
+		<section id="wrap">
+			<!-- 로그인 iframe 위치 -->
+			<h3>해당 제품의 이름과 주문하시는 분의 성함, 배달받으실 주소와 원하는 기간을 필수입력해 주세요.</h3>
+			<nav>
+				<h2>오른쪽 페이지에 있는 과일과 야채 중 섞어서 드시고 싶은 과일을 두가지 선택하여 믹서기로 차례로 드래드하여 놓고 mix 버튼을 클릭하시면  원하는 야채 두가지를 섞은 제품명이 나옵니다. </h2>
+				<div id="bro">브로콜리</div>				
+				<div id="gagi">가지</div>
+				<div id="orange">오렌지</div>
+				<div id="apple">사과</div>
+				<div id="grape">포도</div>
+				<div id="carrot">당근</div>
+				<div id="tomato">토마토</div>
+				<div id="cucumber">오이</div>
+				<div id="mixer">
+					<p id="vegetables" style="color:black"></p>
+					<button onfocus="blur()" id="mix_btn">mix</button>
+				</div>
+                <div id="select_juice" style="border:1px dashed orange">
+	                <span>x</span>
+               		<p style="text-align:center">해당제품을 주문하시려면 게시판에<br/> <b>주문자 성함</b>과 <b>주문상품명</b>을 남겨주세요.</p>
+                </div>
+			</nav>
+			<!-- 게시판 iframe 위치 -->
+			<iframe id="board" src="http://board-3.blueweb.co.kr/board.cgi?id=fulfeeli&bname=order" frameborder="0" ></iframe>
+		</section>
+		
+		<div id="pencil"><!-- pencil --></div>	
+	</div>
+</body>
+</html>

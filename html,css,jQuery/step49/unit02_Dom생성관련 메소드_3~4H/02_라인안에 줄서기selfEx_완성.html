@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>html을 조작하는 메소드</title>
+	
+	<style>
+		#line{border:5px solid silver; padding:5px; margin-top: 10px; padding-top: 50px;}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+	라인 안에 줄을 서야 합니다. 어떤 사람이 줄을 서있는데..... <br><br>
+	<button class="btn1">사람이 한 명 왔어요</button>
+	<button class="btn2">개가 끼어 들었어요</button>
+	<button class="btn3">새는 착하게 뒤에 줄을 섰어요</button>
+	<button class="btn4">닭이 앞에서 기웃거려요</button>
+	<button>empty()로 라인 안의 모인이들 모두 집에 보내기</button>
+	<button>remove()로 행사장 철거하기</button>
+	<br>
+	<div id="line">
+		<img src="img/huk.gif" alt="">
+	</div>
+	<div class="lineStop">그만 왔으면 좋겠다...</div>
+	<!--핵심포인트 정리
+	append, prepend, after, before가 요소를 추가하는 메소드라면 요소를 삭제하기 위한 메소드로 empty(), remove()가 있다.
+	-->
+	
+	<script>
+		$(function(){
+			var btn = $("button");
+			var line = $("#line");
+
+			btn.eq(0).click(function(){
+				line.append("<img src='img/huk.gif'>");
+			})
+			btn.eq(1).click(function(){
+				line.prepend("<img src='img/dog061.gif'>");
+			})
+			btn.eq(2).click(function(){
+				line.append("<img src='img/bird30.gif'>");
+			})
+			btn.eq(3).click(function(){
+				line.before("<img src='img/bird17.gif'>");
+			})
+			btn.eq(4).click(function(){
+				line.empty();
+				//div안쪽의 요소들 비우기
+			})
+			btn.eq(5).click(function(){
+				line.remove();
+				//div를 포함한 요소와 스타일을 모두 제거
+			})
+		})
+			
+
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,14 @@
+==step03==
+1. http://bootstrapk.com/ 사이트의 아래 카테고리에서 배운 내용 복습하기
+http://bootstrapk.com/css/#buttons
+http://bootstrapk.com/components/#btn-groups
+http://bootstrapk.com/css/#images
+http://bootstrapk.com/css/#helper-classes
+(파일명:학습항목_본인이름.html)
+-->수업시간에 못했던 내용도 공부해오세요~!
+
+2. visible, hide의 활용과 nav_selfEX 이미지와 같은 레이아웃을 BS3로 코딩해 보세요.(파일명:visible&hide_본인이름.html)
+
+
+
+

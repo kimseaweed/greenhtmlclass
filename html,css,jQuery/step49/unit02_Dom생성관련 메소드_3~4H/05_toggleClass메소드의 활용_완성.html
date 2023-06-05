@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>06_toggleClass메소드의 활용</title>
+	<style>
+		body{
+			background-color: black;
+		}
+		.light{
+			width: 745px;
+			height: 342px;
+			background: url(img/idea_off.png);
+		}
+		.light.on{
+			background: url(img/idea_on.png);
+		}
+		.switch{
+			width: 352px;
+			height: 352px;
+			background: url(img/off.gif);
+			cursor: pointer;
+		}
+		.switch.on{
+			background: url(img/on.gif);
+		}
+		div{
+			margin:50px auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="light"></div>
+	<div class="switch"></div>
+	<!--핵심포인트 정리
+	
+	-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/prefixfree.min.js"></script>
+	<script>
+		$(function(){
+			var light = $(".light");
+			var light_btn = $(".switch");
+
+			// light_btn.click(function(){
+			// 	var tg = $(this);
+			// 	var answer = tg.hasClass("on");
+			// 	if(answer==false){
+			// 		tg.addClass("on");
+			// 		light.addClass("on");
+			// 	}else{
+			// 		tg.removeClass("on");
+			// 		light.removeClass("on");
+			// 	}
+			// })
+
+			light_btn.click(function(){
+				$(this).toggleClass("on");
+				light.toggleClass("on");
+			})
+
+		})
+	</script>
+</body>
+</html>

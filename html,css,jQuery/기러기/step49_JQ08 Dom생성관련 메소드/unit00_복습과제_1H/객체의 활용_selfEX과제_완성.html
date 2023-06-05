@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>객체의 활용_selfEX과제</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<style>
+		button{
+			margin:10px 30px;
+		}
+	</style>
+</head>
+<body>
+	<h1>HOT MOVIE REVIEW</h1>
+	<!-- img[src="img/movie$.png"]*3 -->
+	<img src="img/movie1.png" alt="">
+	<img src="img/movie2.png" alt="">
+	<img src="img/movie3.png" alt="">
+	<br>
+	<div>
+		<button>신과 함께 관람평가</button>
+		<button>너의 결혼식 관람평가</button>
+		<button>목격자 관람평가</button>
+	</div>
+	<button class="sum">영화의 총점확인</button>
+	<button class="average">영화의 평균확인</button>
+	<script>
+		$(function(){
+			var btn = $("div button");
+			var movie_count = $("img").length;
+			var sum_btn = $(".sum");
+			var average_btn = $(".average");
+
+			/*
+			var movie1={
+				name:"신과 함께",
+				actor1:"하정우",
+				actor2:"주지훈",
+				grade:8,
+				review:function(){
+					alert("영화"+movie1.name+"의 화제의 배우는 "+movie1.actor1+"이고 관람객 평점은"+movie1.grade+"입니다.");
+				}
+			}
+
+			btn.eq(0).click(function(){
+				movie1.review();
+			})
+			*/
+			//생성자 함수 생성
+			function Movie(movieName, mainActor,grade){
+				this.name = movieName,
+				this.actor = mainActor,
+				this.grade = grade,
+				this.review = function(){
+					alert("영화 "+this.name+"의 화제의 배우는 "+this.actor+"이고 관람객 평점은 "+this.grade+"입니다.");
+				}
+			}
+
+			//다양한 데이터를 매개변수로 입력받아 인스턴스를 생성
+			var movie1 = new Movie("신과 함께","하정우",8);
+			var movie2 = new Movie("너의 결혼식","박보영",9);
+			var movie3 = new Movie("목격자","이성민",7);
+			var movie = [movie1, movie2, movie3];
+
+			btn.click(function(){
+				var i = $(this).index();
+				// alert(i);
+				movie[i].review();
+			})
+			
+			function sum(){
+				var result = 0;
+				for(var n=0; n<movie_count; n++){
+					result += movie[n].grade;					
+				}
+				return result;
+			}
+			
+			sum_btn.click(function(){
+				alert(sum());
+			})
+			average_btn.click(function(){
+				var movie_average = sum()/movie_count;
+				alert(movie_average);
+			})
+			
+		})
+	</script>
+</body>
+</html>

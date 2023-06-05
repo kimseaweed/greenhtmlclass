@@ -22,8 +22,10 @@
 #mask {
     position: absolute;
     top: 100px;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 100%;
+    max-width: 600px;
     background-image: url('https://github.com/gokercebeci/flipclock/raw/master/css/mask.png');
     z-index: 2;
 }
@@ -36,10 +38,7 @@ h1 {
 .clearfix {
     clear: both;
 }
-#page {
-    margin: 0 auto;
-    width: 600px;
-}
+
 #container {
     opacity: .9;
 }
@@ -63,8 +62,6 @@ h1 {
 /*==============================================================================
     FLIP CLOCK
 ==============================================================================*/
-.flipclock {
-}
 .flipclock hr {
     position: absolute;
     left: 0;
@@ -305,6 +302,10 @@ body.play ul section.active .down .shadow {
             background-color: ghostwhite;
             border: none;
             border-radius: 10px;
+        }
+        @media (max-width:786px){
+
+            
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>

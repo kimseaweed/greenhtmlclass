@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>02_autocomplete 자동완성기능</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+  <style>
+  #project-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 1em;
+  }
+  #project-icon {
+    float: left;
+  }
+  #project-description {
+    margin: 0;
+    padding: 0;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    var projects = [
+        { label: 'accelerando', details: '점점 빠르게' },
+        { label: 'accent', details: '그 음을 강하게 친다' },
+        { label: 'adagio', details: '천천히, 늦게' },
+        { label: 'andante', details: '걷는 듯한 빠름으로' },
+        { label: 'agitato', details: '쾌활하게' },
+        { label: 'allegro', details: '빠르게' },
+        { label: 'brillante', details: '빛나도록' },
+        { label: 'calando', details: '사라질 듯' },
+        { label: 'cantabile', details: '노래를 부르는 듯' },
+        { label: 'capriccioso', details: '기분이 들뜨게' },
+        { label: 'crescendo', details: '점점 세게' },
+        { label: 'decrescendo', details: '점점 약하게' },
+        { label: 'diminuendo', details: '점점 약하게' },
+        { label: 'dolce', details: '감미롭게 부드럽게' },
+        { label: 'elegante', details: '우아하게' },
+        { label: 'espressivo', details: '감정을 풍부하게' },
+        { label: 'fermata', details: '늘임표' },
+        { label: 'forte', details: '세게' }
+    ];
+ 
+    $( "#project" ).autocomplete({
+      minLength: 0,
+      source: projects,
+      focus: function( event, ui ) {
+        $( "#project" ).val( ui.item.label );
+        return false;
+      },
+      select: function( event, ui ) {
+        $( "#project" ).val( ui.item.label );
+        $( "#project-id" ).val( ui.item.value );
+        $( "#project-description" ).html( ui.item.details );
+        $( "#project-icon" ).attr( "src", "img/" + ui.item.icon );
+ 
+        return false;
+      }
+    })
+    .autocomplete( "instance" )._renderItem = function( ul, item ) {
+      return $( "<li>" )
+        .append( "<div>" + item.label + "<br>" + item.details + "</div>" )
+        .appendTo( ul );
+    };
+  } );
+  </script>
+</head>
+<body>
+ 
+  <div id="project-label">궁금한 악보기호를 검색해 보세요.</div>
+  <img id="project-icon" src="img/forte.png" class="ui-state-default" alt="">
+  <input id="project">
+  <input type="hidden" id="project-id">
+  <p id="project-description"></p>
+ 
+ 
+</body>
+</html>

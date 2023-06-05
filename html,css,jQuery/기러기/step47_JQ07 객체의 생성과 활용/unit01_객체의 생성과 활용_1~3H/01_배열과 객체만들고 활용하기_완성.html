@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>02_배열과 객체만들고 활용하기</title>
+	<script src="js/jquery-1.12.0.min.js"></script>
+</head>
+<body>
+	<script>
+		$(function(){
+			document.write("===배열 만들고 활용하기===");
+			//배열활용
+			var family=["엄마","아빠","나","내동생",4,true];
+			document.write("<br>"+family);
+			document.write("<br>"+family[0]+":"+typeof(family[0]));
+			document.write("<br>"+family[4]+":"+typeof(family[4]));
+			document.write("<br>"+family[5]+":"+typeof(family[5]));
+			family.pop();
+			family.shift();
+			document.write("<br>"+family);
+			family.push("새아가");
+			family.unshift("할아버지");
+			document.write("<br>"+family);
+			
+			//객체 만들고 활용
+			document.write("<br>===객체 만들고 활용하기===");	
+			var baby1={};
+			baby1.age=2;
+			baby1.gender="남자";
+			baby1.name="김아가";
+			document.write(baby1);
+			document.write("<br>이 아가의 이름은 "+baby1.name);
+			document.write("<br>이 아가의 나이는 "+baby1.age);
+			document.write("<br>이 아가의 성별은 "+baby1.gender);
+
+			//객체를 생성하면서 속성과 함께 메소드까지 추가하는 방법
+			var baby2={
+				name:"김예쁨",
+				age:5,
+				gender:"여자",
+				birthday:"5월 5일",
+				cry:function(){
+					alert(this.name+" 아가가 울고 있어요");//this는 baby2를 의미함
+				}
+			}
+			document.write("<br><br>이 아가의 이름은 "+baby2.name);
+			document.write("<button>아가는 무얼하나</button>");
+
+			$("button").click(function(){
+				baby2.cry();
+			})
+	    })
+	</script>
+	
+	
+</body>
+</html>

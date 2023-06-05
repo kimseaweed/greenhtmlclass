@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>제이쿼리를 활용한 이미지 클릭하여 링크 이동</title>
+	<script src="js/jquery-1.12.0.min.js"></script>
+	<style>
+		img{
+			float: left;
+			cursor: pointer;
+		}
+		div{
+			width: 100px;
+			height: 400px;
+			background: url(img/outlet.png);
+			border:1px solid red;
+			position: absolute;
+			margin-left: 200px;
+			background-size: cover;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<!-- https://www.discovery-expedition.com/event/EV201909300000116/GNRL?gclid=EAIaIQobChMIwK6Fpauj6AIVD3yLCh2SxQk_EAEYASAAEgKsJ_D_BwE -->
+	<h1>제이쿼리를 활용한 이미지 클릭하여 링크 이동</h1>
+	<img src="img/outlet.png" alt="아울렛 이동">
+	<div></div>
+	<script>
+		$(function(){
+			var img = $("img");
+			var div = $("div");
+
+			img.click(function(){
+				//location객체의 href속성값으로 원하는 주소값을 문자열로 대입한다.
+				location.href="https://www.lfmall.co.kr/p2/search/result?searchWord=%EB%B0%98%ED%8C%94%ED%8B%B0%EC%85%94%EC%B8%A0&etag1=002_A002_E093&etag2=0&etag3=0&etag4=522&af=8000&utm_source=pc_shopping.naver&utm_medium=cps&utm_campaign=sale";
+				//본인의 페이지가 바뀐다.
+			})
+			div.click(function(){
+				//window객체의 open메소드를 활용
+				//window.open(url,이름,옵션);
+				window.open("https://www.lfmall.co.kr/p2/search/result?searchWord=%EB%B0%98%ED%8C%94%ED%8B%B0%EC%85%94%EC%B8%A0&etag1=002_A002_E093&etag2=0&etag3=0&etag4=522&af=8000&utm_source=pc_shopping.naver&utm_medium=cps&utm_campaign=sale","의류쇼핑몰","width=500,height=500,top=100,left=500");
+				//새로운 윈도우 창이 열린다.
+			})
+			//document가 준비되면 바로 실행
+			window.open("img/event.png","신상 이벤트","width=634, height=854");
+		})
+	</script>
+</body>
+</html>

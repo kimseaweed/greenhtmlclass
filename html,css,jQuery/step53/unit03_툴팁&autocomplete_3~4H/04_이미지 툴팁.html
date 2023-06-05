@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>04_이미지 툴팁</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+  .photo {
+    width: 300px;
+    text-align: center;
+  }
+  .photo .ui-widget-header {
+    margin: 1em 0;
+  }
+  .map {
+    width: 350px;
+    height: 350px;
+  }
+  .ui-tooltip {
+    max-width: 350px;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( document ).tooltip({
+      items: "img, [data-pic], [title], [data-name]",
+      content: function() {
+        var element = $( this );
+        if ( element.is( "[data-pic]" ) ) {
+          var text = element.text();
+          var url = element.attr("href");
+          // alert(url);
+          return text+"<img src='"+url+"'>";
+        }
+        if ( element.is( "[title]" ) ) {
+          return element.attr( "title" );
+        }
+        if ( element.is( "img" ) ) {
+          return element.attr( "alt" );
+        }
+        if ( element.is( "[data-name]" ) ) {
+          return element.attr( "data-name" );
+        }
+      }
+    });
+  } );
+  </script>
+</head>
+<body>
+ <h1>아이가 편식할 땐 아이가 좋아하는 <a href="#" title="캐릭터식기는 단연 아이조아 식기를 사용해요">캐릭터 식기</a>로 맛난 음식을 줘보세요</h1>
+<div class="ui-widget photo">
+  <div class="ui-widget-header ui-corner-all">
+    <h2>민이가 좋아하는 식기</h2>
+    <h3><a href="img/ham_1.jpg" data-pic="사자 캐릭터">사자 캐릭터 식기</a></h3>
+  </div>
+  <a href="img/ham_2.jpg">
+    <img src="img/ham_2.jpg" class="ui-corner-all" title="아이가 좋아해요">
+  </a>
+</div>
+ 
+<div class="ui-widget photo">
+  <div class="ui-widget-header ui-corner-all">
+    <h2>지연이가 좋아하는 식기</h2>
+    <h3><a href="img/ham_4.jpg" data-pic="쥐돌이 캐릭터">쥐돌이 캐릭터 식기</a></h3>
+  </div>
+  <a href="img/ham_3.jpg">
+    <img src="img/ham_3.jpg" class="ui-corner-all" title="아이가 좋아해요">
+  </a>
+</div>
+ 
+<h2>아이들이 좋아하는 아이조아 식기를 구매하려면 <a href="http://www.naver.com" data-name="아이조아 사이트로 빨리 이동해보세요">이동</a></h2>
+ 
+ 
+</body>
+</html>

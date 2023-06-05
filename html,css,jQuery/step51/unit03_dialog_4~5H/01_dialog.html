@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Dialog - Animation</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#dialog" ).dialog({
+      autoOpen: true,
+      show: {
+        effect: "fade",
+        duration: 1000
+      },
+      hide: {
+        effect: "fade",
+        duration: 1000
+      },
+       height: 400,
+       minWidth: 200,//리사이즈했을 때의 모달창의 크기를 잡아줌
+       maxWidth: 400,
+       minHeight: 200,
+       maxHeight: 400,
+       width: "30%",
+       modal: true,//모달창이 떠있을 때에는 페이지의 다른 컨텐츠 비활성화      
+    });
+    $( "#dialog2" ).dialog({
+     autoOpen: false,
+     modal:true,
+     buttons: [
+     {
+        text: "기상청 사이트 바로가기",
+        icon: "ui-icon-clipboard",
+        click: function() {
+          location.href="https://www.weather.go.kr/w/index.do#dong/4111352000"
+        }//브라우저의 url관련 정보를 가지고 있는 location객체의 href속성값을 변경하여 원하는 웹페이지로 이동
+      },
+      {
+        text: "닫기",
+        icon: "ui-icon-heart",
+        click: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    ]
+  });
+
+    $(window).resize(function(){
+      $( "#dialog" ).dialog({
+        position: { my: "center", at: "center", of: window }
+      });
+    });//화면의 크기를 재조절해도 다이얼로그창이 윈도우 창 기준으로 센터로 배치
+  
+ 
+    $( "#today_weather").on( "click", function() {
+      $( "#dialog" ).dialog( "open" );
+    });
+    $( "#tomorrow_weather").on( "click", function() {
+      $( "#dialog2" ).dialog( "open" );
+    });
+    $("#starbucks_event").on("click",function(){
+      // location.href="https://www.starbucks.co.kr/whats_new/campaign_view.do?pro_seq=2169&menu_cd="
+      window.open("https://www.starbucks.co.kr/whats_new/campaign_view.do?pro_seq=2169&menu_cd=","starbucks","width=500, height=500, left=300, top=200");
+    })
+  } );
+  </script>
+</head>
+<body>
+ 
+<div id="dialog" title="오늘의 날씨보기">
+  <p>미세먼지와 초미세먼지는 없으나 어제보다 흐립니다.</p>
+</div>
+<div id="dialog2" title="내일의 날씨보기">
+  <p>내일의 날씨가 궁금하시다면 아래의 버튼을 클릭하여 기상청 사이트로 이동</p>
+</div>
+ 
+<button id="today_weather">오늘의 날씨보기</button>
+<button id="tomorrow_weather">내일의 날씨보기</button>
+<button id="starbucks_event">스타벅스 이벤트 바로가기</button>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At cupiditate numquam assumenda possimus facilis architecto hic sequi beatae sint veniam voluptatem laborum incidunt repudiandae facere accusantium sed amet molestias reiciendis maxime omnis maiores qui nesciunt, inventore adipisci. Voluptates nulla, necessitatibus dicta. Ipsa, voluptatem. Consequatur nam, omnis culpa asperiores mollitia, reprehenderit.</p>
+ 
+</body>
+</html>

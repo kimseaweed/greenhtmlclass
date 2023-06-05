@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/prefixfree.min.js"></script>
+	<style>
+		ul{border:1px solid green;} 
+		#yellow{border:1px solid yellow;}
+	</style>
+</head>
+<body>
+	<p id="yellow">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quas.</p>
+	<ul>
+		<li>List item1</li>
+		<li>List item2</li>
+		<li>List item3</li>
+	</ul>
+	 <button id="btn1">append</button>
+	 <button id="btn2">prepend</button>
+	 <button id="btn3">before</button>
+	 <button id="btn4">after</button>
+	 <button id="btn5">append list</button>
+	 <button id="btn6">prepend list</button>
+	 <button id="btn7">before list</button>
+	 <button id="btn8">after list</button>
+	<!--핵심포인트 정리
+	 prepend,append는 선택한 요소 안에서 앞, 뒤
+	 before, after는 선택한 요소 밖에서 앞,뒤로 요소를 추가!!
+	-->
+	<script>
+		$(function(){
+			var btn = $("button");
+			var ul = $("ul");
+
+			btn.eq(0).click(function(){
+				ul.append("요소 내부의 뒷쪽에 추가");
+			})
+			btn.eq(1).click(function(){
+				ul.prepend("요소 내부의 앞쪽에 추가");
+			})
+			btn.eq(2).click(function(){
+				ul.before("요소 외부의 앞쪽에 추가");
+			})
+			btn.eq(3).click(function(){
+				ul.after("요소 외부의 뒤쪽에 추가");
+			})
+			btn.eq(4).click(function(){
+				ul.append("<li>요소 내부의 뒷쪽에 추가</li>");
+			})
+			btn.eq(5).click(function(){
+				ul.prepend("<li>요소 내부의 앞쪽에 추가</li>");
+			})
+			btn.eq(6).click(function(){
+				ul.before("<li>요소 외부의 앞쪽에 추가</li>");
+			})
+			btn.eq(7).click(function(){
+				ul.after("<li>요소 외부의 뒤쪽에 추가</li>");
+			})
+		})
+		
+	</script> 
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>동영상 제어하기</title>
+</head>
+<body>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<div class="box">
+		<video >
+			<source src="video/nike.mp4" type="video/mp4">
+		</video>
+		<video >
+			<source src="video/ani.mp4" type="video/mp4">
+		</video>
+	</div>
+	<button>1st영상 play</button>
+	<button>1st영상 pause</button>
+	<button>1st영상 음소거</button>
+	<button>1st영상 사운드볼륨 되돌리기</button>
+	<button>2st play</button>
+	<button>2st pause</button>
+	<script>
+	/*필수구문
+		동영상을 마음대로 컨트롤하고 싶을 때 video태그를 직접 선택자로 잡으면 정상적으로 작동하지 않는다. video태그안에 source태그를 사용하여 코딩하여 주고 필히 get()메소드를 활용하여 해당 순서에 맞는 동영상을 가져와야 한다!!!
+	*/
+	$(function(){
+		
+	})
+	</script>
+</body>
+</html>

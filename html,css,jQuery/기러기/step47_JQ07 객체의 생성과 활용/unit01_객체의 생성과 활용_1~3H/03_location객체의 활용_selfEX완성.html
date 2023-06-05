@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>preventDefault()의 활용</title>
+	<style>
+	*{box-sizing: border-box; padding:0; margin:0;}
+	#nav{width: 800px; margin:100px auto 0 auto;}
+	#nav ul li{float: left; position: relative; width: 200px; list-style: none;}	 
+	#nav ul li a{display: block; width: 200px; height: 30px; line-height: 30px;  background-color: gray; text-align: center; color: white}
+	#nav ul li.on a{background-color: skyblue; color: #0983C0; font-weight: bold; text-decoration: none}
+	p{font-size: 3em}
+	</style>
+</head>
+<body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!--핵심포인트 정리
+	-->
+	<div id="nav">
+		<ul>
+			<li class="on"><a href="#">네이버</a></li>
+			<li><a href="#">구글</a></li>
+			<li><a href="#">네이트</a></li>
+			<li><a href="#">다음</a></li>
+		</ul>
+	</div>
+	<br><br><br><br>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/prefixfree.min.js"></script>
+	<script>
+	$(function(){
+		var urls = ["http://www.naver.com","http://www.google.com","http://www.nate.com","http://www.daum.net"];
+		var menu = $("#nav li");
+
+		menu.click(function(){
+			var i = $(this).index();
+			window.open("about:blank").location.href=urls[i];
+			//location객체를 활용하면서 새창으로 띄우는 방법으로는 window객체의 open()메소드를 호출하면서 about속성의 값을 blank로 주고 location객체의 href속성값으로 연결한다.
+			menu.removeClass("on");
+			$(this).addClass("on");
+		})
+	})	
+	</script>
+</body>
+</html>

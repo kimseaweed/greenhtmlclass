@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>trigger_메소드의 활</title>
+		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+		<style>
+			html * { margin:0; padding:0; }
+			body { margin-left:300px; }
+			#box { width:300px; height:300px; border:2px solid blue; margin-top:30px; }
+			#box.over { background-color: red; }
+			#box.out { background-color: green; }
+			#box.down { background-color: blue; }
+			#box.up { background-color: pink; }
+			#box.click { background-color: brown; }
+			#box > p { padding:30px; color:white; }
+			#trigger { padding:10px; width:200px; }
+		</style>
+		<script>
+			/*핵심내용용약
+			선택자.bind({
+				이벤트명:function(){
+					동작할 구문;
+				},
+				이벤트명:function(){
+					동작할 구문;
+				},
+				이벤트명:function(){
+					동작할 구문;
+				}
+			})*/
+		</script>
+	</head>
+	
+	<body>
+	<div id="nav">
+		<span>trigger() 메서드</span><br><br>
+		<button class="over">마우스오버</button>
+		<button class="out">마우스아웃</button>	
+		<button class="click">클릭</button>
+	</div>
+	<div id="box" class="out">
+		<p>mouseout</p>
+	</div>
+	<script>
+		$(function(){
+			var box = $("#box");
+			var btn = $("button");
+			var txt = $("#box p");
+
+			// box.on("click",function(){
+			// 	box.removeClass().addClass("click");
+			// })
+			box.on({
+				click:function(){
+				box.removeClass().addClass("click");
+				txt.text("click");
+				},
+				mouseenter:function(){
+				box.removeClass().addClass("over");	
+				txt.text("over");
+				},
+				mouseleave:function(){
+				box.removeClass().addClass("out");
+				txt.text("out");
+				},
+				mousedown:function(){
+				box.removeClass().addClass("down");
+				txt.text("down");
+				},
+				mouseup:function(){
+				box.removeClass().addClass("up");
+				txt.text("up");
+				}
+			})
+
+			//trigger메소드의 활용
+			btn.first().click(function(){
+				box.trigger("mouseenter");
+			})
+			btn.eq(1).click(function(){
+				box.trigger("mouseleave");
+			})
+			btn.last().click(function(){
+				box.trigger("click");
+			})
+		})
+	</script>
+	</body>
+</html>

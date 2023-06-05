@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>사계절 시계웹_마우스휠완성</title>
+	<script src="js/jquery-1.12.0.min.js"></script>
+	<script src="js/prefixfree.min.js"></script>
+	<script src="js/jquery.mousewheel.js"></script>
+	<style>
+
+		/*reset css*/
+		*{padding:0; margin:0; box-sizing: border-box;}
+		ul li, ol li{float: left;
+			list-style: none;			
+		}
+		/*ul, ol{overflow: hidden;}*/
+		a{text-decoration: none}
+		/*#wrapper 스타일*/
+		html,body{
+			width: 100%;
+			height: 100%;
+		}
+		#wrapper{
+			width: 100%;
+			height:400%;
+			/*overflow: hidden;*/
+			/*다 감싸고 있는 박스를 이미지나 컨텐츠가 벗어나면 숨겨버림*/
+		}
+		/*네비게이션 스타일*/
+		nav#gnb{
+			width: 100%;
+			height:50px;
+			position:fixed;
+		}
+		nav#gnb li{
+			width:23.5%;
+			height:50px;
+			background-color: mediumaquamarine;
+			margin-right:2%;
+			text-align: center;
+			line-height: 50px;
+		}
+		nav#gnb li a{
+			color:white;
+			display: block;
+		}
+		nav#gnb ul li:nth-child(4){
+			margin-right:0
+		}
+		/*갤러리 이미지 스타일*/
+		
+		/*버튼 활성화했을 때 스타일*/
+		nav#gnb li.active{
+			background-color: sandybrown;}
+		/*버튼 활성화했을 때 텍스트 스타일*/
+		nav#gnb li.active a{
+			color:yellow;
+		}
+		/*nav#gnb li a.txt_active{
+			color:yellow;
+		}*/
+		/*각각의 섹션에 해당 이미지컨텐츠 넣기*/
+		#wrapper section{
+			width:100%;
+			height:25%;
+			/*position: relative;*/
+		}
+		#wrapper section:nth-of-type(1){
+			background: url(img/pic1.jpg) no-repeat  center;
+			background-size: cover;
+			background-attachment: fixed;
+		}
+		#wrapper section:nth-of-type(2){
+			background: url(img/pic2.jpg) no-repeat  center;
+			background-size: cover;
+			background-attachment: fixed;
+		}
+		#wrapper section:nth-of-type(3){
+			background: url(img/pic3.jpg) no-repeat  center;
+			background-size: cover;
+			background-attachment: fixed;
+		}
+		#wrapper section:nth-of-type(4){
+			background: url(img/pic4.jpg) no-repeat  center;
+			background-size: cover;
+			background-attachment: fixed;
+		}
+	</style>
+</head>
+<body>
+<!-- div#wrapper>(nav#gnb>ul>li*4>a[href="#"])+img#image[src="img/pic1.jpg" alt="봄" title="봄시계"] -->
+	<div id="wrapper">
+		<nav id="gnb">
+			<ul>
+				<li class="active"><a href="#spring_01" class="txt_active">봄</a></li>
+				<li><a href="#summer_02">여름</a></li>
+				<li><a href="#fall_03">가을</a></li>
+				<li><a href="#winter_04">겨울</a></li>
+			</ul>
+		</nav>
+		<section id="spring_01"></section>
+		<section id="summer_02"></section>
+		<section id="fall_03"></section>
+		<section id="winter_04"></section>
+	</div>
+	<script>
+		$(function(){
+			var menu = $("#gnb li");
+			var ht = $(window).height();
+
+			$(window).resize(function(){
+				ht = $(window).height();
+				//ht를 전역변수로 사용하기 위해 var를 생략함
+			})
+
+			menu.click(function(){
+				var tg = $(this);
+				var i = tg.index();
+				var nowTop = ht*i;
+				//버튼을 클릭시 해당 메뉴버튼 활성화
+				menu.removeClass("active");
+				tg.addClass("active");
+				//버튼을 클릭시 해당 컨텐츠로 스르륵 이동
+				$("html,body").animate({scrollTop:nowTop});
+			})
+
+			//스크롤시 해당 컨텐츠 관련 메뉴를 활성화
+			$(window).scroll(function(){
+				var myScrollTop = $(window).scrollTop();
+				// alert(myScrollTop);
+				if(myScrollTop>=0 && myScrollTop<ht){
+					menu.removeClass("active");
+					menu.eq(0).addClass("active");
+				}else if(myScrollTop>=ht && myScrollTop<ht*2){
+					menu.removeClass("active");
+					menu.eq(1).addClass("active");
+				}else if(myScrollTop>=ht*2 && myScrollTop<ht*3){
+					menu.removeClass("active");
+					menu.eq(2).addClass("active");
+				}else{
+					menu.removeClass("active");
+					menu.eq(3).addClass("active");
+				}
+			})
+
+			//마우스 휠에 반응하여 스르륵 한번에 탁 이동
+			$("section").on("mousewheel",function(event, delta){
+				if(delta > 0){
+					//마우스휠 올렸을 때 실행구문
+					var prev =$(this).prev().offset().top;
+					$("html,body").stop().animate({"scrollTop":prev},500,"linear");
+				}else if(delta < 0){
+					//마우스휠 내렸을 때 실행구문
+					var next =$(this).next().offset().top;
+					$("html,body").stop().animate({"scrollTop":next},500,"linear");
+				}
+			})
+		})
+	</script>
+</body>
+</html>

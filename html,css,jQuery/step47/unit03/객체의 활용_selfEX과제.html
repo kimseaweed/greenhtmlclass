@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>객체의 활용_selfEX과제</title>
-	<script src="js/jquery-1.12.0.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 	<style>
 		button{
 			margin:10px 30px;
@@ -16,16 +16,42 @@
 	<img src="img/movie1.png" alt="">
 	<img src="img/movie2.png" alt="">
 	<img src="img/movie3.png" alt="">
+	<!-- 영화 이미지 추가 -->
 	<br>
-	<button>신과 함께 관람평가</button>
-	<button>너의 결혼식 관람평가</button>
-	<button>목격자 관람평가</button>
+	<button class="movie-score">신과 함께 관람평가</button>
+	<button class="movie-score">너의 결혼식 관람평가</button>
+	<button class="movie-score">목격자 관람평가</button>
+	<!-- 영화 추가 -->
+	<br>
+	<button class="sum">총 합계</button>
+	<button class="score">평균</button>
 	<script>
 		$(function(){
-			
-			
-			
-		})
-	</script>
+			var movie = {
+			name : ["신과 함께","너의 결혼식","목격자"], //수정해도 되는부분
+			actor : ["하정우","이보영","이성민"], //수정해도 되는부분
+			score : [8.9,8,9.5], //수정해도 되는부분
+			getSumScore : function(){
+				var sum = 0;
+				for(let i = 0;i<this.score.length;i++){
+					sum+=this.score[i];
+				}
+				return sum;
+			}
+			};
+
+			$(".movie-score").click(function(){
+				var n = $(".movie-score").index(this);
+				alert("영화 "+movie.name[n]+"의 화제의 배우는 "+movie.actor[n]+"이고 관람객 평점은 "+movie.score[n]+" 입니다.")
+			});
+			$(".sum").click(function(){
+				alert("평점 합계는 "+(movie.getSumScore())+"입니다");
+			});
+			$(".score").click(function(){
+				alert("평점 평균은 "+(movie.getSumScore()/movie.name.length)+"입니다");
+			});
+		});
+
+		</script>
 </body>
 </html>

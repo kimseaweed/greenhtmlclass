@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_fancybox플러그인의활용</title>
+    <!-- jquery library -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+    <!-- jquery fancybox -->
+    <script type="text/javascript" src="fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+    <!-- 팬시박스 css -->
+    <link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+    <!-- 마우스휠 -->
+    <script type="text/javascript" src="fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+    <style>
+        .small img{
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <h2>전시회 갤러리 이미지</h2>
+    <a class="fancy_gallery" href="img/gallery1.png">
+        <img src="img/gallery1_thumb.png" alt=""/>
+    </a>
+    <a class="fancy_gallery" href="img/gallery2.png">
+        <img src="img/gallery2_thumb.png" alt=""/>
+    </a>
+    <a class="fancy_gallery" href="img/gallery3_png">
+        <img src="img/gallery3_thumb.png" alt=""/>
+    </a>
+
+
+    <h2>bottle 보러가기</h2>
+    <a rel="example_group" class="small fancy_gallery" href="img/product01.jpg" title="제목입니다">
+        <img src="img/product01.jpg"/>
+    </a>
+    <a rel="example_group" class="small fancy_gallery" href="img/product02.jpg" title="이미지에 대한 설명입니다" >
+        <img src="img/product02.jpg" alt=""/>
+    </a>
+    <a rel="example_group" class="small fancy_gallery" href="img/product03.jpg"  title="이미지에 대한 설명입니다" >
+        <img src="img/product03.jpg" alt=""/>
+    </a>
+    <a rel="example_group" class="small fancy_gallery" href="img/product04.jpg" title="이미지에 대한 설명입니다" >
+        <img src="img/product04.jpg" alt="" class="last">
+    </a>
+
+</body>
+<script>
+    $( document ).ready(function() {
+        $("a.fancy_gallery").fancybox({
+        'transitionIn'	:	'elastic',
+        'transitionOut'	:	'elastic',
+        'speedIn'		:	600, 
+        'speedOut'		:	200, 
+        'overlayShow'	:	true,
+        'scrolling'     :   'auto',
+        'padding'       :   50,
+        'cyclic'        : 'auto',
+        'overlayOpacity': '0.3',
+        'overlayColor'  : '#666',
+
+    });
+    })
+</script>
+</html>
